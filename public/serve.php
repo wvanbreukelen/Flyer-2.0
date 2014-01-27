@@ -9,3 +9,7 @@ define('APP', ROOT . 'app' . DS);
 
 require('../vendor/autoload.php');
 require('../flyer/bootstrap.php');
+
+exit();
+
+// Code under here will not been executed!
