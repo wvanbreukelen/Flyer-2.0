@@ -5,7 +5,7 @@ namespace Flyer\Components\Router;
 use Flyer\Components\Router\RouteBuilder;
 
 /**
- * The Route class responds to the RouteBuilder which builds the Route Query. This Query is passed to the Router
+ * The Route class responds to the RouteBuilder which builds a instance for the Router.
  */
 
 class Route
