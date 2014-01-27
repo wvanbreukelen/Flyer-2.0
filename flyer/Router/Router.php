@@ -37,17 +37,6 @@ class Router
 	}
 
 	/**
-	 * Sets the request, so the router can compare the routes with the current request
-	 *
-	 * @var  object Symfony\Component\HttpFoundation\Request
-	 */
-
-	public function setRequest(Request $request)
-	{
-		$this->request = $request;
-	}
-
-	/**
 	 * Resolve the route of the given request
 	 *
 	 * @return  void
@@ -91,6 +80,17 @@ class Router
 		} else {
 			throw new \Exception("Router: Cannot determain variable type of route");
 		}
+	}
+	
+	/**
+	 * Sets the request, so the router can compare the routes with the current request
+	 *
+	 * @var  object Symfony\Component\HttpFoundation\Request
+	 */
+
+	public function setRequest(Request $request)
+	{
+		$this->request = $request;
 	}
 
 	/**
