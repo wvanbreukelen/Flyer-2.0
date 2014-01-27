@@ -1,5 +1,5 @@
 <?php
-
+/**
 namespace Flyer\Components\HTTP\Request;
 
 interface RequestInterface
@@ -8,3 +8,4 @@ interface RequestInterface
 	public function arguments($method);
 	public function method($method = null);
 }
+*/
