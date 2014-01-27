@@ -13,8 +13,6 @@ class HTTPServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		// $this->package($package, $namespace = null, $path = null);
-
 		$request = new Request($this->request);
 	}
 
