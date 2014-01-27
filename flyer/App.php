@@ -52,6 +52,10 @@ class App
 
 		ServiceProvider::setApp($this);
 	}
+	
+	/**
+	 * Returns the current config
+	 */
 
 	public function config()
 	{
@@ -71,7 +75,7 @@ class App
 	}
 	
 	/**
-	 * Attach a component to the application
+	 * Import a ServiceProvider into the application, and run the register method in the Service Provider
 	 *
 	 * @var object The Service Provider of the component, extending the ServiceProvider class
 	 * @return  void 
@@ -85,7 +89,7 @@ class App
 	}
 
 	/**
-	 * Boot the application by booting all service providers
+	 * Boot the application, boots all of the imported Service Providers
 	 *
 	 * @return  void
 	 */
@@ -99,6 +103,10 @@ class App
 	
 		$this->booted = true;
 	}
+	
+	/**
+	 * Trigger the final events to shutdown the application
+	 */
 
 	public function shutdown()
 	{
@@ -110,6 +118,12 @@ class App
 			echo $this->triggerErrorPage('404');
 		}
 	}
+	
+	/**
+	 * Triggers the error page, developer has to give the HTTP error code
+	 * 
+	 * @param $error The HTTP error code
+	 */
 
 	public function triggerErrorPage($error)
 	{
@@ -117,7 +131,7 @@ class App
 	}
 
 	/**
-	 * Removes all providers out of the pending boot payload
+	 * Removes all Service Providers out of the pending boot payload
 	 *
 	 * @return  void 
 	 */
