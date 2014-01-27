@@ -1,0 +1,6 @@
+- Create a Router package
+- Creating a simple http layer for the Flyer framework
+- Using the http layer to create a requestMethod($method) method that check the current request.
+- Creating a AliasLoader
+- Checking possibity to use DELETE and UPDATE methods for the Router
+- Enable Router MultiThreading?

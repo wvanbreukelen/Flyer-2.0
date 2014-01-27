@@ -11,7 +11,7 @@ use Flyer\App;
  * Create a new application
  */
 
-$app = new App();
+$app = new App(new Config);
 
 $app->setRegistryHandler(new Registry);
 
@@ -34,10 +34,7 @@ Registry::set('application.request.method', $_SERVER['REQUEST_METHOD']);
  * Require the config files and add those results to the Registry
  */
 
-$config = new Config;
-$config->import(APP . 'config' . DS . 'config.php');
-
-print_r(Config::get('serviceProviders'));
+$app->config()->import(APP . 'config' . DS . 'config.php');
 
 Registry::set('config', require(APP . 'config' . DS . 'config.php'));
 

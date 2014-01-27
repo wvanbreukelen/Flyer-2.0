@@ -1,0 +1,10 @@
+{
+    "require": {
+        "symfony/http-foundation": "2.4.*",
+        "filp/whoops": "dev-master",
+        "illuminate/database": "4.1.*@dev"
+    },
+    "autoload": {
+        "classmap": ["../Flyer/app", "../Flyer/flyer"]
+    }
+}

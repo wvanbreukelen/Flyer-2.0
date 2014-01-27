@@ -4,9 +4,16 @@ namespace Flyer;
 
 use Flyer\Foundation\ServiceProvider;
 use Flyer\Foundation\Events\Events;
+use Flyer\Foundation\Config\Config;
 
 class App
 {
+
+	/**
+	 * The config object
+	 */
+	
+	public $config;
 
 	/**
 	 * Holds all of the service providers
@@ -32,6 +39,24 @@ class App
 
 	protected $registryHandler;
 
+	/**
+	 * The application instance
+	 */
+
+	protected $app;
+
+	public function __construct(Config $config)
+	{
+		$this->app = $this;
+		$this->config = $config;
+
+		ServiceProvider::setApp($this);
+	}
+
+	public function config()
+	{
+		return $this->config;
+	}
 
 	/**
 	 * Sets the registry handler that the application has to use
@@ -71,12 +96,13 @@ class App
 		{
 			$provider->boot();
 		}
-		
+	
 		$this->booted = true;
 	}
 
 	public function shutdown()
 	{
+		if (!$this->booted) throw new \Exception("App: Application cannot been shutdown, it has to been booted!");
 		if (Events::exists('application.route'))
 		{
 			echo Events::trigger('application.route');
