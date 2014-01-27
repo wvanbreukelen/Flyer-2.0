@@ -8,6 +8,10 @@ class DB
 {
 
 	private $driver;
+	
+	/**
+	 * Register the database driver
+	 */
 
 	public function register()
 	{
