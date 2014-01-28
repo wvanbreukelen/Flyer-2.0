@@ -52,7 +52,7 @@ class RouteBuilder
 	 * @param The options for the route
 	 */
 
-	public static function setOptions(array $options = $options) 
+	public static function setOptions(array $options = array()) 
 	{
 		$this->options = $options;
 	}
