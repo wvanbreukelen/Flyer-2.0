@@ -4,3 +4,5 @@
 - Creating a AliasLoader
 - Checking possibity to use DELETE and UPDATE methods for the Router
 - Enable Router MultiThreading?
+
+- Create a cache handler

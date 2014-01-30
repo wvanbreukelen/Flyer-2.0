@@ -8,5 +8,5 @@ namespace Flyer\Components\View\Compilers;
 
 interface CompilerInterface
 {
-	
+	public function compile($view);
 }
