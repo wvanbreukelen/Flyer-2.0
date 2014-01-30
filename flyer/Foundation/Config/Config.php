@@ -19,6 +19,11 @@ class Config
                     
     }
 
+    public function getFull()
+    {
+        return self::$resources;
+    }
+
     public static function get($resource)
     {
             foreach (self::$resources as $configCollection)
@@ -60,5 +65,4 @@ class Config
 
         throw new \Exception("Config: Resources cannot been imported!");
     }
-
 }
