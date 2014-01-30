@@ -1,6 +1,8 @@
 <?php
 
-namespace Next\Components;
+namespace Flyer\Components;
+
+use Flyer\Components\View\Compiler;
 
 /**
  * The general view engine
@@ -9,6 +11,34 @@ namespace Next\Components;
 class View
 {
 
+	protected $compiler;
+
+	/**
+	 * Construct a compiler
+	 *
+	 * @param Next\Components\View\Compiler The compiler, has to be a instance of Next\Components\View\Compiler
+	 */
+
+	public function __construct(Compiler $compiler)
+	{
+		$this->compiler = $compiler;
+	}
+
+	/**
+	 * Render a view
+	 *
+	 * @param  string The view path
+	 * @return string The rendered view
+	 */
+
+	public function render($view)
+	{
+		$contents = file_get_contents(APP . 'views' . DS . $view . '.blade.php');
+
+		return $this->compile($contents);
+
+	}
+
 	/**
 	 * Compile a view if it does not exists in the cache or it is modified
 	 *
@@ -16,14 +46,14 @@ class View
 	 * @param  bool Enable caching
 	 */
 
-	public function compile($view, $caching = true)
+	public function compile($contents, $caching = true)
 	{
 		if ($caching)
 		{
 			// Check for existance in the cache
-			// Compile the view and return the result
+			return $this->compiler->compile($contents);
 		} else {
-			// Compile the view and return the result
+			return $this->compiler->compile($contents);
 		}
 	}
 

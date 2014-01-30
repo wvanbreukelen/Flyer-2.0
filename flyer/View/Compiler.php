@@ -1,5 +1,7 @@
 <?php
 
+namespace Flyer\Components\View;
+
 /**
  * The compiler compiles the view into readable code for the browser
  */
@@ -11,7 +13,7 @@ class Compiler
 	 * All of the registered compilers
 	 */
 
-	protected $compilers = array()
+	protected $compilers = array();
 
 	/**
 	 * Register a compiler

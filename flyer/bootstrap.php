@@ -62,7 +62,7 @@ Events::create(array(
 Events::create(array(
 	'title' => 'application.error.404',
 	'event' => function () {
-		return '<h2>Er is een fout opgetreden!</h2><p>De pagina waarop je gezocht op hebt, is helaas niet (meer) beschrikaar';
+		//return '<h2>Er is een fout opgetreden!</h2><p>De pagina waarop je gezocht op hebt, is helaas niet (meer) beschrikaar';
 	}
 ));
 
@@ -91,6 +91,8 @@ require(APP . 'routes.php');
  */
 
 $app->boot();
+
+require(APP . 'views/test.php');
 
 /**
  * Shutdown the application

@@ -4,7 +4,7 @@ namespace Flyer\Components\View\Compilers;
 
 use Flyer\Components\View\Compilers\CompilerInterface;
 
-class BladeCompiler extends Compiler implements CompilerInterface {
+class BladeCompiler implements CompilerInterface {
 
         /**
          * All of the registered extensions.
@@ -19,24 +19,24 @@ class BladeCompiler extends Compiler implements CompilerInterface {
          * @var array
          */
         protected $compilers = array(
-                'Extensions',
-                'Extends',
-                'Comments',
-                'Echos',
-                'Openings',
-                'Closings',
-                'Else',
-                'Unless',
-                'EndUnless',
-                'Includes',
-                'Each',
-                'Yields',
-                'Shows',
-                'Language',
-                'SectionStart',
-                'SectionStop',
-                'SectionAppend',
-                'SectionOverwrite',
+            'Extensions',
+            'Extends',
+            'Comments',
+            'Echos',
+            'Openings',
+            'Closings',
+            'Else',
+            'Unless',
+            'EndUnless',
+            'Includes',
+            'Each',
+            'Yields',
+            'Shows',
+            'Language',
+            'SectionStart',
+            'SectionStop',
+            'SectionAppend',
+            'SectionOverwrite',
         );
 
         /**
@@ -61,10 +61,12 @@ class BladeCompiler extends Compiler implements CompilerInterface {
          */
         public function compile($contents)
         {
-            if ( ! is_null($this->cachePath))
-            {
-                    $this->files->put($this->getCompiledPath($path), $contents);
-            }
+            //if ( ! is_null($this->cachePath))
+            //{
+                    //$this->files->put($this->getCompiledPath($path), $contents);
+            //}
+            
+            return $this->compileString($contents);
         }
 
         /**

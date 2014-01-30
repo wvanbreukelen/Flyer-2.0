@@ -7,12 +7,13 @@ return array(
 		'Flyer\Foundation\Events\Events' => 'Events',
 		'Flyer\Foundation\Registry' => 'Registry',
 		'Flyer\Foundation\Config\Config' => 'Config',
-
+		'Flyer\Components\View\ViewServiceProvider' => 'View',
 	),
 
 	'serviceProviders' => array(
 		//'Flyer\Components\HTTP\HTTPServiceProvider',
 		'Flyer\Components\Router\RouterServiceProvider',
+		'Flyer\Components\View\ViewServiceProvider',
 		
 	),
 
