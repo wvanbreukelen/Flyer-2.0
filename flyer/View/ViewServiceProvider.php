@@ -6,5 +6,8 @@ use Flyer\Foundation\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {
-
+	public function register()
+	{
+		
+	}
 }

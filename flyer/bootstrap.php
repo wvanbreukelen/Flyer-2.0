@@ -92,8 +92,6 @@ require(APP . 'routes.php');
 
 $app->boot();
 
-require(APP . 'views/test.php');
-
 /**
  * Shutdown the application
  */
