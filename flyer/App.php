@@ -15,7 +15,7 @@ class App
 {
 
 	/**
-	 * The config object
+	 * Holds the config object
 	 */
 	
 	public $config;
@@ -50,6 +50,12 @@ class App
 
 	protected $app;
 
+	/**
+	 * Construct
+	 *
+	 * @param object The config object the application has to use
+	 */
+
 	public function __construct(Config $config)
 	{
 		$this->app = $this;
@@ -60,6 +66,8 @@ class App
 	
 	/**
 	 * Returns the config instance
+	 *
+	 * @return object The object instance
 	 */
 
 	public function config()
@@ -69,6 +77,8 @@ class App
 
 	/**
 	 * Returns the Registry instance
+	 *
+	 * @return object The registry instance
 	 */
 	
 	public function registry()
@@ -78,6 +88,8 @@ class App
 
 	/**
 	 * Returns the database instance
+	 *
+	 * @return object The database instance
 	 */
 
 	public function database()
