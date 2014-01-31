@@ -54,12 +54,21 @@ class App
 	}
 	
 	/**
-	 * Returns the current config
+	 * Returns the config instance
 	 */
 
 	public function config()
 	{
 		return $this->config;
+	}
+
+	/**
+	 * Returns the Registry instance
+	 */
+	
+	public function registry()
+	{
+		return $this->registryHandler->registry();
 	}
 
 	/**

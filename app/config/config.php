@@ -7,7 +7,7 @@ return array(
 		'Flyer\Foundation\Events\Events' => 'Events',
 		'Flyer\Foundation\Registry' => 'Registry',
 		'Flyer\Foundation\Config\Config' => 'Config',
-		'Flyer\Components\View\ViewServiceProvider' => 'View',
+		'Flyer\Components\View' => 'View',
 	),
 
 	'serviceProviders' => array(

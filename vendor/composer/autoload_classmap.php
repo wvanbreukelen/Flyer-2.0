@@ -16,6 +16,8 @@ return array(
     'Flyer\\Components\\Router\\Router' => $baseDir . '/flyer/Router/Router.php',
     'Flyer\\Components\\Router\\RouterInterface' => $baseDir . '/flyer/Router/RouterInterface.php',
     'Flyer\\Components\\Router\\RouterServiceProvider' => $baseDir . '/flyer/Router/RouterServiceProvider.php',
+    'Flyer\\Components\\View' => $baseDir . '/flyer/View/View.php',
+    'Flyer\\Components\\View\\ViewEngine' => $baseDir . '/flyer/View/ViewEngine.php',
     'Flyer\\Components\\View\\ViewServiceProvider' => $baseDir . '/flyer/View/ViewServiceProvider.php',
     'Flyer\\Foundation\\AliasLoader' => $baseDir . '/flyer/Foundation/AliasLoader.php',
     'Flyer\\Foundation\\Config\\Config' => $baseDir . '/flyer/Foundation/Config/Config.php',

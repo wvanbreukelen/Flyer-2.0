@@ -41,20 +41,6 @@ class Registry
 		return;
 	}
 
-	public static function getAll()
-	{
-		return self::$items;
-	}
-
-	/**public static function getSpecified(array $specifiedKeys = array())
-	{
-		$values = array();
-
-		$values = array_keys(self::getAll(), $specifiedKeys);
-
-		print_r($values);
-	}**/
-
 	public static function update($key, $toValue)
 	{
 		if (self::exists($key))
@@ -80,4 +66,10 @@ class Registry
 	{
 		if (self::exists($key)) unset(self::$items[$key]);
 	}
+
+	public function registry()
+	{
+		return self::$items;
+	}
+	
 }
