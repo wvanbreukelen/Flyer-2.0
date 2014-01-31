@@ -46,7 +46,8 @@ class Router
 
 	public static function addRoute($method, $listener, $route)
 	{
-		self::$routes[$listener] = array(
+		$salt = rand(0, 999999);
+		self::$routes[$listener . '.?.' . $salt] = array(
 			'method' => $method,
 			'route' => $route
 		);
@@ -64,6 +65,8 @@ class Router
 		{
 			foreach (self::$routes as $listener => $route)
 			{
+				$listener = $this->resolveListener($listener);
+
 				if ($this->request->server->get('REQUEST_METHOD') == $route['method'])
 				{
 					$uri = explode('/', ltrim($this->request->getPathInfo(), '/'));
@@ -148,6 +151,18 @@ class Router
 				return $route->$action['method']();
 			}
 		));
+	}
+
+	/**
+	 * Resolve the listener out a "salted" listener
+	 *
+	 * @param  string The listener
+	 * @return  string The resolved listener
+	 */
+
+	protected function resolveListener($listener)
+	{
+		return explode('.?.', $listener)[0];
 	}
 
 	/**

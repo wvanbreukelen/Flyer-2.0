@@ -218,4 +218,15 @@ class App
 	{
 		return $this->booted;
 	}
+
+	/**
+	 * Gets the instance of the app object
+	 *
+	 * @return  object The app instance
+	 */
+	
+	public function getInstance()
+	{
+		return $this;
+	}
 }

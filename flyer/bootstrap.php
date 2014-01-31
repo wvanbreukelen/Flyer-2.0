@@ -2,7 +2,6 @@
 
 use Flyer\Foundation\Events\Events;
 use Flyer\Components\ClassLoader;
-use Flyer\Foundation\AliasLoader;
 use Flyer\Foundation\Registry;
 use Flyer\Foundation\Config\Config;
 use Flyer\App;
@@ -62,7 +61,7 @@ Events::create(array(
 Events::create(array(
 	'title' => 'application.error.404',
 	'event' => function () {
-		//return '<h2>Er is een fout opgetreden!</h2><p>De pagina waarop je gezocht op hebt, is helaas niet (meer) beschrikaar';
+		return '<h2>Er is een fout opgetreden!</h2><p>De pagina waarop je gezocht op hebt, is helaas niet (meer) beschrikaar';
 	}
 ));
 
@@ -80,6 +79,7 @@ foreach (Registry::get('config')['serviceProviders'] as $serviceProvider)
 {
 	$app->register(new $serviceProvider);
 }
+
 
 require(APP . 'routes.php');
 
