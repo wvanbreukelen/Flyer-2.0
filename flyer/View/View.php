@@ -8,14 +8,4 @@ class View
 	{
 		return \Registry::get('application.view.engine')->render($view, $assigns);
 	}
-
-	public static function cache($view, array $assigns = array())
-	{
-		
-	}
-
-	public static function recache($view, array $assigns = array())
-	{
-
-	}
 }

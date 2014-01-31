@@ -13,7 +13,10 @@ class ViewServiceProvider extends ServiceProvider
 
 	public function register()
 	{
-		$this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem(APP . 'views' . DS));
+		$this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem(APP . 'views' . DS), array(
+			'cache' => APP . 'storage' . DS . 'cache' . DS,
+			'auto_reload' => true
+		));
 		\Registry::set('application.view.engine', new ViewEngine($this->twig));
 	}
 }

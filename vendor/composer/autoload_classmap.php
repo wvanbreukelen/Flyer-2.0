@@ -27,4 +27,5 @@ return array(
     'Flyer\\Foundation\\ServiceProvider' => $baseDir . '/flyer/Foundation/ServiceProvider.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'WeatherController' => $baseDir . '/app/controllers/WeatherController.php',
+    '__TwigTemplate_ecc993c93741417c6e1584ca6a2331aea395af4a8f7c4b5d0518b71646c02ba2' => $baseDir . '/app/storage/cache/ec/c9/93c93741417c6e1584ca6a2331aea395af4a8f7c4b5d0518b71646c02ba2.php',
 );
