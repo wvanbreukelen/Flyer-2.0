@@ -9,12 +9,28 @@ use Flyer\Components\Http;
 use Flyer\Components\Router\Route;
 use Flyer\Foundation\Events\Events;
 
+/**
+ * The router matches the developer own routes and returns a request for that route
+ */
+
 class Router
 {
 
+	/**
+	 * All of the routes
+	 */
+
 	protected static $routes = array();
 
+	/**
+	 * All for the method that can been used
+	 */
+
 	protected $methods = array("POST", "GET", "DELETE", "UPDATE");
+
+	/**
+	 * The request to match the routes
+	 */
 
 	private $request;
 
