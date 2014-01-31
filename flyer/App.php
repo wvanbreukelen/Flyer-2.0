@@ -5,6 +5,7 @@ namespace Flyer;
 use Flyer\Foundation\ServiceProvider;
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Config\Config;
+use Flyer\Foundation\AliasLoader;
 
 /**
  * The main application object
@@ -94,6 +95,20 @@ class App
 	public function setRegistryHandler($handler)
 	{
 		$this->registryHandler = $handler;
+	}
+
+	/**
+	 * Creates aliases for specified classes
+	 *
+	 * @param  array The classes
+	 */
+
+	public function createAliases(array $options = array())
+	{
+		foreach ($options as $alias => $class)
+		{
+			AliasLoader::create($class, $alias);
+		}
 	}
 	
 	/**

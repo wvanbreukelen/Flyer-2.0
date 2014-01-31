@@ -70,10 +70,7 @@ Events::create(array(
  * Creating all aliases for the original classes, they are specified in the config array
  */
 
-foreach (Registry::get('config')['classAliases'] as $originalClass => $alias)
-{
-	AliasLoader::create($originalClass, $alias);
-}
+$app->createAliases(Registry::get('config')['classAliases']);
 
 /**
  * Attach all of the service providers (specified the config file) to the application

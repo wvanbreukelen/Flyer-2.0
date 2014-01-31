@@ -3,11 +3,11 @@
 return array(
 
 	'classAliases' => array(
-		'Symfony\Component\HttpFoundation\Request' => 'SymfonyRequest',
-		'Flyer\Foundation\Events\Events' => 'Events',
-		'Flyer\Foundation\Registry' => 'Registry',
-		'Flyer\Foundation\Config\Config' => 'Config',
-		'Flyer\Components\View' => 'View',
+	        'SymfonyRequest' =>'Symfony\Component\HttpFoundation\Request',
+	        'Events' => 'Flyer\Foundation\Events\Events',
+	        'Registry' => 'Flyer\Foundation\Registry',
+	        'Config' => 'Flyer\Foundation\Config\Config',
+	        'View' => 'Flyer\Components\View',
 	),
 
 	'serviceProviders' => array(
