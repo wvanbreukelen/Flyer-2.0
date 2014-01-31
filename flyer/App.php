@@ -89,6 +89,24 @@ class App
 	}
 
 	/**
+	 * Get or check the current application environment.
+	 *
+	 * @param  dynamic
+	 * @return string
+	 */
+	public function environment()
+	{
+		if (count(func_get_args()) > 0)
+		{
+			return in_array($this['env'], func_get_args());
+		}
+		else
+		{
+			return $this['env'];
+		}
+	}
+
+	/**
 	 * Boot the application, boots all of the imported Service Providers
 	 *
 	 * @return  void

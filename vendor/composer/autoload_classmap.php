@@ -20,6 +20,7 @@ return array(
     'Flyer\\Components\\View\\Compiler' => $baseDir . '/flyer/View/Compiler.php',
     'Flyer\\Components\\View\\Compilers\\BladeCompiler' => $baseDir . '/flyer/View/Compilers/BladeCompiler.php',
     'Flyer\\Components\\View\\Compilers\\CompilerInterface' => $baseDir . '/flyer/View/Compilers/CompilerInterface.php',
+    'Flyer\\Components\\View\\Factory' => $baseDir . '/flyer/View/Factory.php',
     'Flyer\\Components\\View\\ViewServiceProvider' => $baseDir . '/flyer/View/ViewServiceProvider.php',
     'Flyer\\Foundation\\AliasLoader' => $baseDir . '/flyer/Foundation/AliasLoader.php',
     'Flyer\\Foundation\\Config\\Config' => $baseDir . '/flyer/Foundation/Config/Config.php',

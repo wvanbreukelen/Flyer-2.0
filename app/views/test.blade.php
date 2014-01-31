@@ -1,11 +1,9 @@
-<html>
-    <body>
-        @section('sidebar')
-            This is the master sidebar.
-        @show
+@extends('layouts.master')
 
-        <div class="container">
-            @yield('content')
-        </div>
-    </body>
-</html>
+@section('sidebar')
+    <p>This is appended to the master sidebar.</p>
+@stop
+
+@section('content')
+    <p>This is my body content.</p>
+@stop
