@@ -9,6 +9,7 @@ return array(
     'Flyer\\App' => $baseDir . '/flyer/App.php',
     'Flyer\\Components\\ClassLoader' => $baseDir . '/flyer/ClassLoader.php',
     'Flyer\\Components\\Database\\DB' => $baseDir . '/flyer/Database/DB.php',
+    'Flyer\\Components\\Database\\DatabaseServiceProvider' => $baseDir . '/flyer/Database/DatabaseServiceProvider.php',
     'Flyer\\Components\\HTTP\\HTTPServiceProvider' => $baseDir . '/flyer/HTTP/HTTPServiceProvider.php',
     'Flyer\\Components\\HTTP\\Request\\Request' => $baseDir . '/flyer/HTTP/Request/Request.php',
     'Flyer\\Components\\Router\\Route' => $baseDir . '/flyer/Router/Route.php',

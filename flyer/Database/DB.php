@@ -2,21 +2,27 @@
 
 namespace Flyer\Components\Database;
 
-use Illuminate\Database\Capsule\Manager as IlluminateDB;
+use Illuminate\Database\Capsule\Manager as DatabaseHandler;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
 
 class DB
 {
 
-	private $driver;
-	
-	/**
-	 * Register the database driver
-	 */
+	private static $driver;
 
-	public function register()
+	public function __construct($driver)
 	{
-		$this->driver = new IlluminateDB;
+		$this->setDriver($driver);
+	}
+	
+	public function setDriver($driver)
+	{
+		self::$driver = $driver;
+	}
 
-		$this->driver->addConnection(Config::get('database'));
+	public static function getDriver()
+	{
+		return self::$driver;
 	}
 }

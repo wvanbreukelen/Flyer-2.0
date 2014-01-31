@@ -6,6 +6,10 @@ use Flyer\Foundation\ServiceProvider;
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Config\Config;
 
+/**
+ * The main application object
+ */
+
 class App
 {
 
@@ -69,6 +73,15 @@ class App
 	public function registry()
 	{
 		return $this->registryHandler->registry();
+	}
+
+	/**
+	 * Returns the database instance
+	 */
+
+	public function database()
+	{
+		return $this->registry()['application.db'];
 	}
 
 	/**

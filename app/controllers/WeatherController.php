@@ -6,14 +6,6 @@ class WeatherController
 {
 	public function index()
 	{
-		//return "Hi, I am the weather page!!!"';
-		
-		//$engine = new ViewEngine();
-
-		//$engine->compile();
-		
-		//$engine = Registry::get('application.view.engine');
-		//echo $engine->render('view.html');
-		echo \View::render('view.html');
+		print_r(\Registry::get('application.db')->table('users')->where('user_id', '=', 2)->get());
 	}
 }
