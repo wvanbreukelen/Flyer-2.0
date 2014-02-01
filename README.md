@@ -6,6 +6,7 @@ A simple to use PHP framework
 ### Notes
 * This framework uses the MVC pattern
 * This framework is in development, expect some (major) bugs
+* This framework is inspired by Laravel
 
 ### Routing
 
