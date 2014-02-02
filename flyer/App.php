@@ -135,13 +135,15 @@ class App
 		{
 			foreach ($providerCollection as $provider)
 			{
-				$provider->register($provider);
+				$provider = new $provider;
+				$provider->register();
+
 				$this->providers[] = $provider;
 			}
 		} else if (is_object($providerCollection)) {
-			$provider = $providerCollection;
+			$provider = new $providerCollection;
 
-			$providerCollection->register();
+			$provider->register();
 			$this->providers[] = $provider;
 		} else {
 			throw new \Exception("Unable to register provider(s), variable type has to been a array or object, not " . gettype($providerCollection));
