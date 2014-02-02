@@ -7,6 +7,20 @@ A simple to use PHP framework
 * This framework uses the MVC pattern
 * This framework is in development, expect some (major) bugs
 * This framework is inspired by Laravel
+* This part of the framework is in alpha status
+
+### Installation
+
+It's very easy to install the Flyer Framework!
+Steps:
+
+1. Clone this repository, the master or alpha branch.
+2. Open a command window (Terminal, CMD, etc.) and type
+```bash
+composer update
+```
+This will install the required dependencies and generate the autoload files
+3. Done, enjoy!
 
 ### Routing
 
