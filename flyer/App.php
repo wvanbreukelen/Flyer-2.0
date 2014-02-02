@@ -112,7 +112,7 @@ class App
 	/**
 	 * Creates aliases for specified classes
 	 *
-	 * @param  array The classes
+	 * @param array The classes
 	 */
 
 	public function createAliases(array $options = array())
