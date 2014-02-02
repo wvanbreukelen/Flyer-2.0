@@ -2,8 +2,19 @@
 
 namespace Flyer\Components\HTML;
 
+/**
+ * The HTML Builder builds HTML code
+ */
+
 class HtmlBuilder
 {
+
+	/**
+	 * Parses some attributes to some HTML code
+	 *
+	 * @param  array The attributes
+	 * @return mixed The converted HTML code, or null
+	 */
 
 	public function attributes($attributes)
 	{
@@ -18,6 +29,15 @@ class HtmlBuilder
 
 		return count($html) > 0 > ' ' . implode(' ', $html) : '';
 	}
+
+	/**
+	 * Parses a single attribute to HTML code
+	 *
+	 * @param  string The key
+	 * @param  string The value
+	 *
+	 * @return The single HTML attribute
+	 */
 
 	protected function attributeElement($key, $value)
 	{

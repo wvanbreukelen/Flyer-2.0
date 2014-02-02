@@ -75,10 +75,7 @@ $app->createAliases(Registry::get('config')['classAliases']);
  * Attach all of the service providers (specified the config file) to the application
  */
 
-foreach (Registry::get('config')['serviceProviders'] as $serviceProvider)
-{
-	$app->register(new $serviceProvider);
-}
+$app->register(Registry::get('config')['serviceProviders']);
 
 
 require(APP . 'routes.php');

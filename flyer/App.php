@@ -135,34 +135,18 @@ class App
 		{
 			foreach ($providerCollection as $provider)
 			{
-				$provider->register($provider);
+				$provider = new $provider;
+				$provider->register();
+
 				$this->providers[] = $provider;
 			}
 		} else if (is_object($providerCollection)) {
-			$provider = $providerCollection;
+			$provider = new $providerCollection;
 
-			$providerCollection->register();
+			$provider->register();
 			$this->providers[] = $provider;
 		} else {
 			throw new \Exception("Unable to register provider(s), variable type has to been a array or object, not " . gettype($providerCollection));
-		}
-	}
-
-	/**
-	 * Get or check the current application environment.
-	 *
-	 * @param  dynamic
-	 * @return string
-	 */
-	public function environment()
-	{
-		if (count(func_get_args()) > 0)
-		{
-			return in_array($this['env'], func_get_args());
-		}
-		else
-		{
-			return $this['env'];
 		}
 	}
 
