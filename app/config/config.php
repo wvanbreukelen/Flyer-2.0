@@ -23,7 +23,7 @@ return array(
 		'host'      => 'localhost',
 		'database'  => 'flyer',
 		'username'  => 'root',
-		'password'  => '',
+		'password'  => 'linux',
 		'charset'   => 'utf8',
 		'collation' => 'utf8_unicode_ci',
 		'prefix'    => '',

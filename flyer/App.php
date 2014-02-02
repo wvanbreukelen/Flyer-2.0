@@ -126,15 +126,26 @@ class App
 	/**
 	 * Import a ServiceProvider into the application, and run the register method in the Service Provider
 	 *
-	 * @var object The Service Provider of the component, extending the ServiceProvider class
-	 * @return  void 
+	 * @var mixed The Service Provider(s), a array or an object 
 	 */
 
-	public function register(ServiceProvider $provider)
+	public function register($providerCollection)
 	{
-		$provider->register();
+		if (is_array($providerCollection))
+		{
+			foreach ($providerCollection as $provider)
+			{
+				$provider->register($provider);
+				$this->providers[] = $provider;
+			}
+		} else if (is_object($providerCollection)) {
+			$provider = $providerCollection;
 
-		$this->providers[] = $provider;
+			$providerCollection->register();
+			$this->providers[] = $provider;
+		} else {
+			throw new \Exception("Unable to register provider(s), variable type has to been a array or object, not " . gettype($providerCollection));
+		}
 	}
 
 	/**
