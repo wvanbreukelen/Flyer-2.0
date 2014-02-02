@@ -23,7 +23,7 @@ This will install the required dependencies and generate the autoload files
 
 ### Routing
 
-The Routing component in the Flyer Framework make it easy to create route. it is inspired by Taylot Otwell's Laravel Routing engine. You specify your routes in the routes.php file (located in the app folder) 
+The Routing component in the Flyer Framework make it easy to create route. it is inspired by Taylor Otwell's Laravel Routing engine. You specify your routes in the routes.php file (located in the app folder) 
 Below some examples:
 
 ###### GET route
