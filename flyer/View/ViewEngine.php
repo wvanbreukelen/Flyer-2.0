@@ -19,7 +19,7 @@ class ViewEngine
 	{
 		if (is_null($id))
 		{
-			return $this->render($view);
+			return $this->render($view . '.html');
 		}
 
 		Registry::get('application.view.compiler')->compile($id, $view);
