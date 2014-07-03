@@ -16,7 +16,7 @@ class ViewCompiler
 	{
 		if (isset($this->compilers[$id]))
 		{
-			return $this->compilers[$id]->render($view);
+			return $this->compilers[$id]->compile($view);
 		}
 
 		throw new \Exception("ViewCompiler: Compiler " . $id . " does not exists!");
