@@ -16,6 +16,11 @@ define('APP', ROOT . 'app' . DS);
 
 // Require the composer autoloader
 
+if (!file_exists('../vendor/autoload.php'))
+{
+    die("Please run composer update"); 
+}
+
 require('../vendor/autoload.php');
 
 // Require the application's bootstrap
