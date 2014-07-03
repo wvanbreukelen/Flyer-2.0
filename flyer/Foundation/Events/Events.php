@@ -15,7 +15,7 @@ class Events
 		} else if (is_array($event)) {
 			self::$events[$event['title']] = $event['event'];
 		} else {
-			throw new \Exception("Events: Cannot create new event, becayse $event isn't a object or array.");
+			throw new \Exception("Events: Cannot create new event, because $event isn't a object or array.");
 		}
 	}
 

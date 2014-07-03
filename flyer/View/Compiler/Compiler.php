@@ -1,8 +1,8 @@
 <?php
 
-namespace Flyer\Components\View\Compiler\Compiler;
+namespace Flyer\Components\View\Compiler;
 
 abstract class Compiler
 {
-	abstract public function render();
+	abstract public function render($view);
 }

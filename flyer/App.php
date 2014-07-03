@@ -21,6 +21,12 @@ class App
 	public $config;
 
 	/**
+	 * Holds all of the view compilers
+	 */
+	
+	protected $viewCompilers = array();
+
+	/**
 	 * Holds all of the service providers
 	 */
 
@@ -98,6 +104,17 @@ class App
 	}
 
 	/**
+	 * Returns the view instance
+	 *
+	 * @return object The view compiler instance
+	 */
+	
+	public function viewCompiler()
+	{
+		return $this->registry()['application.view.compiler'];
+	}
+
+	/**
 	 * Sets the registry handler that the application has to use
 	 *
 	 * @var  object The registry handler
@@ -107,6 +124,17 @@ class App
 	public function setRegistryHandler($handler)
 	{
 		$this->registryHandler = $handler;
+	}
+
+	/**
+	 * Sets the View compilers of the application that can be used
+	 *
+	 * @var  array The View compilers
+	 */
+
+	public function setViewCompilers(array $viewCompilers = array())
+	{
+		$this->viewCompilers = $viewCompilers;
 	}
 
 	/**
@@ -140,13 +168,36 @@ class App
 
 				$this->providers[] = $provider;
 			}
+
+			$this->registerCompilers();
 		} else if (is_object($providerCollection)) {
 			$provider = new $providerCollection;
 
 			$provider->register();
 			$this->providers[] = $provider;
+
+			$this->registerCompilers();
 		} else {
 			throw new \Exception("Unable to register provider(s), variable type has to been a array or object, not " . gettype($providerCollection));
+		}
+	}
+
+	/**
+	 * Register all the compilers that where registered into the application
+	 *
+	 * @var  $config Out of the config
+	 */
+	
+	protected function registerCompilers()
+	{
+		foreach ($this->viewCompilers as $viewCompilerID => $viewCompiler)
+		{
+			if (class_exists($viewCompiler))
+			{
+				$this->viewCompiler()->addCompiler($viewCompilerID, new $viewCompiler);
+			} else {
+				throw new \Exception("Unable to register view compiler " . $viewCompiler . ", because it does not exists");
+			}
 		}
 	}
 
@@ -172,7 +223,7 @@ class App
 
 	public function shutdown()
 	{
-		if (!$this->booted) throw new \Exception("App: Application cannot been shutdown, it has to been booted!");
+		if (!$this->booted) throw new \Exception("App: Application cannot been shutdown, it has to be in a booted state!");
 		if (Events::exists('application.route'))
 		{
 			echo Events::trigger('application.route');

@@ -1,12 +1,10 @@
 <?php
 
-use Flyer\Foundation\Registry;
-
 class WeatherController extends BaseController
 {
 	public function index()
 	{
-		echo View::render('view.html', 'application.blade');
+		echo View::render('view.html', 'wvanbreukelen.blade');
 	}
 
 	public function handle()

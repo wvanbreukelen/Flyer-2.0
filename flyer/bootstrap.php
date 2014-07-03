@@ -72,11 +72,20 @@ Events::create(array(
 $app->createAliases(Registry::get('config')['classAliases']);
 
 /**
+ * Register all of the developed created compilers
+ */
+
+$app->setViewCompilers(Registry::get('config')['viewCompilers']);
+
+/**
  * Attach all of the service providers (specified the config file) to the application
  */
 
 $app->register(Registry::get('config')['serviceProviders']);
 
+/**
+ * Require the route file
+ */
 
 require(APP . 'routes.php');
 

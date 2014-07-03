@@ -15,7 +15,12 @@ return array(
 		'Flyer\Components\Router\RouterServiceProvider',
 		'Flyer\Components\View\ViewServiceProvider',
 		'Flyer\Components\Database\DatabaseServiceProvider',
+		'wvanbreukelen\Test\TestServiceProvider',
 		
+	),
+
+	'viewCompilers' => array(
+		'wvanbreukelen.blade' => 'wvanbreukelen\Blade\Compile',
 	),
 
 	'database' => array(
