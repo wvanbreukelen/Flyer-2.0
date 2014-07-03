@@ -22,7 +22,7 @@ class ViewEngine
 			return $this->render($view . '.html');
 		}
 
-		Registry::get('application.view.compiler')->compile($id, $view);
+		return Registry::get('application.view.compiler')->compile($id, $view);
 	}
 
 	private function render($view, array $assigns = array())
