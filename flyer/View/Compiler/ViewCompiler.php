@@ -16,7 +16,7 @@ class ViewCompiler
 	{
 		if (isset($this->compilers[$id]))
 		{
-			return $this->compilers[$id]->compile(file_get_contents(APP . 'views' . DS . $view . '.html'));
+			return $this->compilers[$id]->compile(file_get_contents(APP . 'views' . DS . $view . '.php'));
 		}
 
 		throw new \Exception("ViewCompiler: Compiler " . $id . " does not exists!");
