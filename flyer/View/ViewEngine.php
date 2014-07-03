@@ -15,13 +15,19 @@ class ViewEngine
 		$this->twig = $twig;
 	}
 
-	public function render($view, array $assigns = array())
+	public function compile($view, $id = null)
+	{
+		if (is_null($id))
+		{
+			return $this->render($view);
+		}
+
+		Registry::get('application.view.compiler')->compile($id, $view);
+	}
+
+	private function render($view, array $assigns = array())
 	{
 		return $this->twig->render($view);
 	}
 
-	public function compile()
-	{
-
-	}
 }	

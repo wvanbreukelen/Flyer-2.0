@@ -6,7 +6,7 @@ class WeatherController extends BaseController
 {
 	public function index()
 	{
-		return "Hi! I'm the weather controller index method";
+		echo View::render('view.html', 'application.blade');
 	}
 
 	public function handle()
