@@ -13,6 +13,10 @@ use Flyer\App;
 
 $app = new App(new Config);
 
+/**
+ * Set the application registry handler
+ */
+
 $app->setRegistryHandler(new Registry);
 
 /**
@@ -21,8 +25,7 @@ $app->setRegistryHandler(new Registry);
 
 $whoops = new Whoops\Run();
 $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
-
-//$whoops->register();
+$whoops->register();
 
 /**
  * Setting up the current request method
@@ -62,7 +65,7 @@ Events::create(array(
 Events::create(array(
 	'title' => 'application.error.404',
 	'event' => function () {
-		return '<h2>Er is een fout opgetreden!</h2><p>De pagina waarop je gezocht op hebt, is helaas niet (meer) beschrikaar';
+		return View::render('404.blade', array('page' => 'mijnpagina'));
 	}
 ));
 

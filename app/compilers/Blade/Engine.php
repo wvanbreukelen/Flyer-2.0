@@ -19,7 +19,7 @@ class BladeEngine extends Compiler
 		$this->blade = new BladeCompiler();
 		$this->contents = $this->blade->compile($contents);
 
-		if (!file_exists(APP . 'storage/cache' . DS . $view . '.php') || $contents == file_get_contents(APP . 'storage/cache' . DS . $view . '.php'))
+		if ($this->contents != file_get_contents(APP . 'storage/cache' . DS . $view . '.php'))
 		{
 			file_put_contents(APP . 'storage/cache' . DS . $view . '.php', $this->contents);
 		}
