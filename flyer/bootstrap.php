@@ -18,10 +18,10 @@ $app->setRegistryHandler(new Registry);
  * Set up the Exception handler for the application
  */
 
-//$whoops = new Whoops\Run();
-//$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+$whoops = new Whoops\Run();
+$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
 
-//$whoops->register();
+$whoops->register();
 
 /**
  * Setting up the current request method
