@@ -54,7 +54,7 @@ Registry::set('foundation.events', new Events);
 Events::create(array(
 	'title' => 'request.get',
 	'event' => function () {
-		return SymfonyRequest::createFromGlobals();
+		return Request::createFromGlobals();
 	}
 ));
 
@@ -65,7 +65,7 @@ Events::create(array(
 Events::create(array(
 	'title' => 'application.error.404',
 	'event' => function () {
-		return View::render('404.blade', array('page' => 'mijnpagina'));
+		return View::render('404.blade', array('page' => Request::createFromGlobals()->getPathInfo()));
 	}
 ));
 
