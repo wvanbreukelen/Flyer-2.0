@@ -3,6 +3,7 @@
 namespace Flyer\Components\Database;
 
 use Flyer\Foundation\ServiceProvider;
+use Flyer\Foundation\Config\Config;
 use Illuminate\Database\Capsule\Manager as DatabaseHandler;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
@@ -17,7 +18,7 @@ class DatabaseServiceProvider extends ServiceProvider
 	{
 		$this->driver = new DatabaseHandler;
 
-		$this->driver->addConnection(\Config::get('database'));
+		$this->driver->addConnection(Config::get('database'));
 		$this->driver->setEventDispatcher(new Dispatcher(new Container));
 		$this->driver->setAsGlobal();
 	}
