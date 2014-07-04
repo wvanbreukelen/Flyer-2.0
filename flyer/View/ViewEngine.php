@@ -4,6 +4,7 @@ namespace Flyer\Components\View;
 
 use Twig_Environment;
 use Flyer\Foundation\Registry;
+use Flyer\Foundation\Config\Config;
 
 class ViewEngine
 {
@@ -15,17 +16,27 @@ class ViewEngine
 		$this->twig = $twig;
 	}
 
-	public function compile($view, $id = null)
+	public function compile($view, $values, $id)
 	{
-		if (is_null($id))
+		if (Config::exists('defaultViewCompiler') && is_null($id))
 		{
-			return $this->render($view . '.php');
+			return $this->renderDefault($view, $values);
 		}
 
-		return Registry::get('application.view.compiler')->compile($id, $view);
+		if (is_null($id))
+		{
+			return $this->render($view);
+		}
+
+		return Registry::get('application.view.compiler')->compile($id, $view, $values);
 	}
 
-	private function render($view, array $assigns = array())
+	private function renderDefault($view, $values)
+	{
+		return Registry::get('application.view.compiler')->compile(Config::get('defaultViewCompiler'), $view, $values);
+	}
+
+	private function render($view, $values)
 	{
 		return $this->twig->render($view);
 	}

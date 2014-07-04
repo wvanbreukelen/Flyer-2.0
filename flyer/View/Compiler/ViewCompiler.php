@@ -12,11 +12,17 @@ class ViewCompiler
 		$this->compilers[$id] = $compiler;
 	}
 
-	public function compile($id, $view)
+
+	public function compile($id, $view, $values)
 	{
+		if (is_null($values))
+		{
+			$values = array();
+		}
+
 		if (isset($this->compilers[$id]))
 		{
-			return $this->compilers[$id]->compile(file_get_contents(APP . 'views' . DS . $view . '.php'));
+			return $this->compilers[$id]->compile($view, $values);
 		}
 
 		throw new \Exception("ViewCompiler: Compiler " . $id . " does not exists!");

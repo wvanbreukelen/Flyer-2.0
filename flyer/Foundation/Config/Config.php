@@ -24,6 +24,21 @@ class Config
         return self::$resources;
     }
 
+    public static function exists($resource)
+    {
+        foreach (self::$resources as $configCollection) 
+        {
+            foreach ($configCollection as $configItemName => $configItem) {
+                if ($resource == $configItemName)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public static function get($resource)
     {
             foreach (self::$resources as $configCollection)

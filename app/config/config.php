@@ -20,8 +20,10 @@ return array(
 	),
 
 	'viewCompilers' => array(
-		'wvanbreukelen.blade' => 'wvanbreukelen\Blade\Compile',
+		'wvanbreukelen.blade' => 'wvanbreukelen\Blade\BladeEngine',
 	),
+
+	'defaultViewCompiler' => 'wvanbreukelen.blade',
 
 	'database' => array(
 		'driver'    => 'mysql',

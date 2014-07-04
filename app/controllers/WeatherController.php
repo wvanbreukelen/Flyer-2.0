@@ -4,7 +4,7 @@ class WeatherController extends BaseController
 {
 	public function index()
 	{
-		echo View::render('view.html', 'wvanbreukelen.blade');
+		echo View::render('view.blade', array('name' => 'Wiebe'));
 	}
 
 	public function handle()
