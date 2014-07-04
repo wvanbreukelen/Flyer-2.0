@@ -8,6 +8,8 @@ use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Config\Config;
 use Flyer\Foundation\AliasLoader;
 
+use Flyer\Components\Security\BcryptHasher;
+
 /**
  * The main application object
  */
@@ -38,6 +40,12 @@ class App extends Container
 	 */
 
 	protected $bootedProviders = array();
+
+	/**
+	 * The facade prefix
+	 */
+	
+	protected $facadePrefix = '';
 
 	/**
 	 * Holds the current booting status of the application
@@ -101,7 +109,7 @@ class App extends Container
 
 	public function database()
 	{
-		return $this->registry()['application.db'];
+		return $this['application.db'];
 	}
 
 	/**
@@ -112,7 +120,7 @@ class App extends Container
 	
 	public function viewCompiler()
 	{
-		return $this->registry()['application.view.compiler'];
+		return $this['application.view.compiler'];
 	}
 
 	/**
@@ -144,11 +152,20 @@ class App extends Container
 	 * @param array The classes
 	 */
 
-	public function createAliases(array $options = array())
+	public function createAliases(array $options = array(), $facade = true)
 	{
-		foreach ($options as $alias => $class)
+		if ($facade)
 		{
-			AliasLoader::create($class, $alias);
+			foreach ($options as $alias => $class)
+			{
+				AliasLoader::create($class, $alias);
+				//$this->registerFacade($alias, $class);
+			}
+		} else {
+			foreach ($options as $alias => $class)
+			{
+				AliasLoader::create($class, $alias);
+			}
 		}
 	}
 	
@@ -199,6 +216,14 @@ class App extends Container
 			} else {
 				throw new \Exception("Unable to register view compiler " . $viewCompiler . ", because it does not exists");
 			}
+		}
+	}
+
+	protected function registerFacade($alias, $class)
+	{
+		if (class_exists($class))
+		{
+			$this[$this->facadePrefix . $alias] = new $class;
 		}
 	}
 

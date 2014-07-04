@@ -8,8 +8,7 @@ return array(
         'Registry' => 'Flyer\Foundation\Registry',
         'Config' => 'Flyer\Foundation\Config\Config',
         'View' => 'Flyer\Components\View',
-        'Eloquent' => 'Illuminate\Database\Eloquent\Model',
-        'Hash' => 'Flyer\Components\Security\BcryptHasher',
+        'Hash' => 'Flyer\Foundation\Facades\Hash',
         
 	),
 
@@ -18,6 +17,7 @@ return array(
 		'Flyer\Components\Router\RouterServiceProvider',
 		'Flyer\Components\View\ViewServiceProvider',
 		'Flyer\Components\Database\DatabaseServiceProvider',
+		'Flyer\Components\Security\SecurityServiceProvider',
 		'wvanbreukelen\Test\TestServiceProvider',
 		
 	),

@@ -1,6 +1,7 @@
 <?php
 
 use Flyer\Foundation\Events\Events;
+use Flyer\Foundation\Facades\Facade;
 use Flyer\Components\ClassLoader;
 use Flyer\Foundation\Registry;
 use Flyer\Foundation\Config\Config;
@@ -21,7 +22,7 @@ $app->setRegistryHandler(new Registry);
 $whoops = new Whoops\Run();
 $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
 
-$whoops->register();
+//$whoops->register();
 
 /**
  * Setting up the current request method
@@ -69,7 +70,12 @@ Events::create(array(
  * Creating all aliases for the original classes, they are specified in the config array
  */
 
-$app->createAliases(Registry::get('config')['classAliases']);
+
+/**
+ * Initialize the Database component
+ */
+
+$app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
 
 /**
  * Register all of the developed created compilers
@@ -83,11 +89,19 @@ $app->setViewCompilers(Registry::get('config')['viewCompilers']);
 
 $app->register(Registry::get('config')['serviceProviders']);
 
+$app->createAliases(Registry::get('config')['classAliases']);
+
 /**
  * Require the route file
  */
 
 require(APP . 'routes.php');
+
+/**
+ * Initialize the facade and setting some things up
+ */
+
+Facade::setFacadeApplication($app);
 
 /**
  * Boot the application

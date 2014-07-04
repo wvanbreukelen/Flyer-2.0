@@ -39,6 +39,11 @@ abstract class ServiceProvider
 		self::$app = $app;
 	}
 
+	public function share($id, $value = null)
+	{
+		$this->app()[$id] = $value;
+	}
+
 	/**
 	 * Returns the instance of the application
 	 *

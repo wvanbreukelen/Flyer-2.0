@@ -8,6 +8,6 @@ class SecurityServiceProvider extends ServiceProvider
 {
 	public function register()
 	{
-
+		$this->share('hash', new BcryptHasher);
 	}
 }

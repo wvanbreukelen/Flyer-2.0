@@ -2,6 +2,7 @@
 
 namespace Flyer\Components\View;
 
+use Flyer\Foundation\Registry;
 use Flyer\Foundation\ServiceProvider;
 use Flyer\Components\View\ViewEngine;
 use Flyer\Components\View\Compiler\ViewCompiler;
@@ -18,7 +19,10 @@ class ViewServiceProvider extends ServiceProvider
 			'cache' => APP . 'storage' . DS . 'cache' . DS,
 			'auto_reload' => true
 		));
-		\Registry::set('application.view.engine', new ViewEngine($this->twig));
-		\Registry::set('application.view.compiler', new ViewCompiler());
+		//Registry::set('application.view.engine', new ViewEngine($this->twig));
+		//Registry::set('application.view.compiler', new ViewCompiler());
+		
+		$this->share('application.view.engine', new ViewEngine($this->twig));
+		$this->share('application.view.compiler', new ViewCompiler());
 	}
 }

@@ -27,7 +27,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		Registry::set('application.db', $this->driver);
+		$this->share('application.db', $this->driver);
 
 		$this->app()->database()->table('users')->get();
 	}
