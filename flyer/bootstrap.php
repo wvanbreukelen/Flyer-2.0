@@ -91,17 +91,18 @@ $app->register(Registry::get('config')['serviceProviders']);
 
 $app->createAliases(Registry::get('config')['classAliases']);
 
-/**
- * Require the route file
- */
-
-require(APP . 'routes.php');
 
 /**
  * Initialize the facade and setting some things up
  */
 
 Facade::setFacadeApplication($app);
+
+/**
+ * Require the route file
+ */
+
+require(APP . 'routes.php');
 
 /**
  * Boot the application

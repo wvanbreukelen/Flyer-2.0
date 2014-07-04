@@ -21,5 +21,7 @@ class RouterServiceProvider extends ServiceProvider
 		$this->router = new Router();
 
 		$this->router->setRequest(Request::createFromGlobals());
+
+		$this->share('route', new Route());
 	}	
 }

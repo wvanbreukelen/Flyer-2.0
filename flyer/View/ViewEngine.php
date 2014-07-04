@@ -11,9 +11,10 @@ class ViewEngine
 
 	protected $twig;
 
-	public function __construct(Twig_Environment $twig)
+	public function __construct(Twig_Environment $twig, $compiler)
 	{
 		$this->twig = $twig;
+		$this->compiler = $compiler;
 	}
 
 	public function compile($view, $values, $id)
@@ -28,12 +29,12 @@ class ViewEngine
 			return $this->render($view);
 		}
 
-		return Registry::get('application.view.compiler')->compile($id, $view, $values);
+		return $this->compiler->compile($id, $view, $values);
 	}
 
 	private function renderDefault($view, $values)
 	{
-		return Registry::get('application.view.compiler')->compile(Config::get('defaultViewCompiler'), $view, $values);
+		return $this->compiler->compile(Config::get('defaultViewCompiler'), $view, $values);
 	}
 
 	private function render($view, $values)

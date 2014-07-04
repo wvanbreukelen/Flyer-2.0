@@ -17,7 +17,7 @@ class Route
 	 * @param string The action if the Router matches with the given URI
 	 */
 	
-	public static function get($uri, $action)
+	public function get($uri, $action)
 	{
 		Router::addRoute("GET", $uri, $action);
 	}
@@ -29,7 +29,7 @@ class Route
 	 * @param string The action if the Router matches with the given URI
 	 */
 
-	public static function post($uri, $action)
+	public function post($uri, $action)
 	{
 		Router::addRoute("POST", $uri, $action);
 	}
@@ -41,7 +41,7 @@ class Route
 	 * @param string The action if the Router matches with the given URI
 	 */
 
-	public static function update($uri, $action)
+	public function update($uri, $action)
 	{
 		Router::addRoute("UPDATE", $uri, $action);
 	}
@@ -53,7 +53,7 @@ class Route
 	 * @param string The action if the Router matches with the given URI
 	 */
 
-	public static function delete($uri, $action)
+	public function delete($uri, $action)
 	{
 		Router::addRoute("DELETE", $uri, $action);
 	}
@@ -65,7 +65,7 @@ class Route
 	 * @param string The action if the Router matches with the given URI
 	 */
 
-	public static function any($uri, $action)
+	public function any($uri, $action)
 	{
 		Router::addRoute("ANY", $uri, $action);
 	}

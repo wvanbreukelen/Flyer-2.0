@@ -7,8 +7,9 @@ return array(
         'Events' => 'Flyer\Foundation\Events\Events',
         'Registry' => 'Flyer\Foundation\Registry',
         'Config' => 'Flyer\Foundation\Config\Config',
-        'View' => 'Flyer\Components\View',
+        'View' => 'Flyer\Foundation\Facades\View',
         'Hash' => 'Flyer\Foundation\Facades\Hash',
+        'Route' => 'Flyer\Foundation\Facades\Route',
         
 	),
 

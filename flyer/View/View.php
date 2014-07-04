@@ -4,8 +4,16 @@ namespace Flyer\Components;
 
 class View
 {
-	public static function render($view, $values = null, $id = null)
+
+	protected $engine;
+
+	public function __construct($engine)
 	{
-		return \Registry::get('application.view.engine')->compile($view, $values, $id);
+		$this->engine = $engine;
+	}
+
+	public function render($view, $values = null, $id = null)
+	{
+		return $this->engine->compile($view, $values, $id);
 	}
 }

@@ -7,7 +7,7 @@ use Flyer\App;
 abstract class ServiceProvider
 {	
 
-	protected static $app;
+	public static $app;
 
 	public function boot() {}
 
