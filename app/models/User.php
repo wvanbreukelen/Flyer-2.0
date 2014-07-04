@@ -1,9 +1,9 @@
 <?php
 
-class User
+class User extends Eloquent
 {
-	public function setName($name)
+	public function setHash()
 	{
-		echo $name;
+		echo Hash::make('lol');
 	}
 }

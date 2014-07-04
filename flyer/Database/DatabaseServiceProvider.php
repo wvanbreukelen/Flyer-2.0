@@ -4,6 +4,7 @@ namespace Flyer\Components\Database;
 
 use Flyer\Foundation\ServiceProvider;
 use Flyer\Foundation\Config\Config;
+use Flyer\Foundation\Registry;
 use Illuminate\Database\Capsule\Manager as DatabaseHandler;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
@@ -21,12 +22,12 @@ class DatabaseServiceProvider extends ServiceProvider
 		$this->driver->addConnection(Config::get('database'));
 		$this->driver->setEventDispatcher(new Dispatcher(new Container));
 		$this->driver->setAsGlobal();
+		$this->driver->bootEloquent();
 	}
 
 	public function boot()
 	{
-		$this->driver->bootEloquent();
-		\Registry::set('application.db', $this->driver);
+		Registry::set('application.db', $this->driver);
 
 		$this->app()->database()->table('users')->get();
 	}

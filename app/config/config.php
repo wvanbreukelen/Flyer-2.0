@@ -8,6 +8,9 @@ return array(
         'Registry' => 'Flyer\Foundation\Registry',
         'Config' => 'Flyer\Foundation\Config\Config',
         'View' => 'Flyer\Components\View',
+        'Eloquent' => 'Illuminate\Database\Eloquent\Model',
+        'Hash' => 'Flyer\Components\Security\BcryptHasher',
+        
 	),
 
 	'serviceProviders' => array(
