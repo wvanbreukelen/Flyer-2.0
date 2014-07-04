@@ -2,6 +2,7 @@
 
 namespace Flyer;
 
+use Flyer\Foundation\Container;
 use Flyer\Foundation\ServiceProvider;
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Config\Config;
@@ -11,7 +12,7 @@ use Flyer\Foundation\AliasLoader;
  * The main application object
  */
 
-class App
+class App extends Container
 {
 
 	/**

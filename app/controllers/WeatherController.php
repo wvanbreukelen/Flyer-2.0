@@ -4,10 +4,10 @@ class WeatherController extends BaseController
 {
 	public function index()
 	{
-		echo View::render('view.blade', array('name' => 'Wiebe'));
+		//echo View::render('view.blade', array('name' => 'Wiebe'));
 
 		$user = new User();
-		$user->setHash();
+		//$user->setHash();
 	}
 
 	public function handle()
