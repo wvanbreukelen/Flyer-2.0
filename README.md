@@ -97,7 +97,7 @@ I'm going to add this section later, stay tuned!
 
 ### Views
 
-Your views display the grapical user interface (GUI) to the user. We used the Twig Templating engine, so we recommend to take a look here: http://twig.sensiolabs.org/documentation
+Please check the link here to see how you can implement your views easier in your own application, using View compilers.
 
 ### Create your own packages
 
