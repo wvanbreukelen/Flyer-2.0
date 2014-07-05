@@ -17,7 +17,6 @@ return array(
 		'Flyer\Components\View\ViewServiceProvider',
 		'Flyer\Components\Database\DatabaseServiceProvider',
 		'Flyer\Components\Security\SecurityServiceProvider',
-		'wvanbreukelen\Test\TestServiceProvider',
 		
 	),
 

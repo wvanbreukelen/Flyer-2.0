@@ -76,6 +76,12 @@ class Router
 						$this->generateRouteEvent($route['route']);
 						return;
 					}
+				} else {
+					if (strtolower($uri[0]) == $listener)
+					{
+						$this->generateRouteEvent($route['route']);
+						return;
+					}
 				}
 			}
 		}
