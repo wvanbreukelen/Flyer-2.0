@@ -46,6 +46,11 @@ Route::update('', 'WeatherController@index');
 Route::delete('', 'WeatherController@index');
 ```
 
+###### ANY route
+```php
+Route::any('', 'WeatherController@index');
+```
+
 So it is possible that your routes file looks like this
 
 ```php
