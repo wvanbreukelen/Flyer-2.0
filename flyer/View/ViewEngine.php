@@ -26,7 +26,7 @@ class ViewEngine
 
 		if (is_null($id))
 		{
-			return $this->render($view);
+			return $this->render($view . '.php', $values);
 		}
 
 		return $this->compiler->compile($id, $view, $values);
