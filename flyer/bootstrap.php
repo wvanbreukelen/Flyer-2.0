@@ -100,6 +100,7 @@ $app->createAliases(Registry::get('config')['classAliases']);
  */
 
 Facade::setFacadeApplication($app);
+$app->attach('app', $app);
 
 /**
  * Require the route file

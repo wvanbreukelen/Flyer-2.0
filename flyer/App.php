@@ -2,6 +2,7 @@
 
 namespace Flyer;
 
+use Exception;
 use Flyer\Foundation\Container;
 use Flyer\Foundation\ServiceProvider;
 use Flyer\Foundation\Events\Events;
@@ -121,6 +122,39 @@ class App extends Container
 	public function viewCompiler()
 	{
 		return $this['application.view.compiler'];
+	}
+
+	/**
+	 * Bind a value to the application container
+	 *
+	 * @var mixed
+	 */
+	
+	public function attach($id, $value = null)
+	{
+		if (is_callable($value))
+		{
+			$this[$id] = call_user_func($value);
+		} else {
+			$this[$id] = $value;	
+		}
+	}
+
+	/**
+	 * Access a value that is attacted to the application container
+	 *
+	 * @var id Container id
+	 * @return  mixed Container value
+	 */
+	
+	public function access($id)
+	{
+		if (isset($this[$id]))
+		{
+			return $this[$id];
+		}
+
+		throw new Exception("App: Cannot access " . $id);
 	}
 
 	/**

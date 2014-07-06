@@ -6,9 +6,10 @@ return array(
         'Request' =>'Symfony\Component\HttpFoundation\Request',
         'Events' => 'Flyer\Foundation\Events\Events',
         'Registry' => 'Flyer\Foundation\Registry',
+        'App' => 'Flyer\Foundation\Facades\App',
         'View' => 'Flyer\Foundation\Facades\View',
         'Hash' => 'Flyer\Foundation\Facades\Hash',
-        'Route' => 'Flyer\Foundation\Facades\Route', 
+        'Route' => 'Flyer\Foundation\Facades\Route',
 	),
 
 	'serviceProviders' => array(
@@ -38,5 +39,3 @@ return array(
 	),
 
 );
-
-// Config' => 'Flyer\Foundation\Config\Config',
