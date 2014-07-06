@@ -4,7 +4,7 @@ class WeatherController extends BaseController
 {
 	public function index()
 	{
-		App::attach('test', 'lolz');
+		File::delete(APP . 'test.txt');
 	}
 
 	public function handle()

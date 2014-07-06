@@ -10,6 +10,7 @@ return array(
         'View' => 'Flyer\Foundation\Facades\View',
         'Hash' => 'Flyer\Foundation\Facades\Hash',
         'Route' => 'Flyer\Foundation\Facades\Route',
+        'File' => 'Flyer\Foundation\Facades\File',
 	),
 
 	'serviceProviders' => array(
@@ -17,7 +18,8 @@ return array(
 		'Flyer\Components\Router\RouterServiceProvider',
 		'Flyer\Components\View\ViewServiceProvider',
 		'Flyer\Components\Database\DatabaseServiceProvider',
-		'Flyer\Components\Security\SecurityServiceProvidersss',
+		'Flyer\Components\Security\SecurityServiceProvider',
+		'Flyer\Components\Filesystem\FilesystemServiceProvider',
 		
 	),
 
