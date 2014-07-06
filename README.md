@@ -67,7 +67,7 @@ Route::get('', 'WeatherController@index');
 
 ### Controllers
 
-Your controller has to extend the BaseController, which is located in app/controllers/BaseController.php
+Your controller has to extend the BaseController.
 You are free to edit the BaseController as anything you like, but always extend it in your own controller!
 
 Example of a well written controller
@@ -96,7 +96,34 @@ class SampleController extends BaseController
 
 ### Models
 
-I'm going to add this section later, stay tuned!
+Your models can been accessed like a "normal" alias. So if you have a model like this
+
+```php
+<?php
+
+class User
+{
+	public function helloUser()
+	{
+		echo "Hello, user!";
+	}
+
+	public static function goodbyeUser()
+	{
+		echo "Goodbye, user!";
+	}
+}
+```
+
+you can access it like this
+
+```php
+$user = new User();
+
+$user->helloUser();
+
+User::goodbyeUser();
+```
 
 ### Views
 
