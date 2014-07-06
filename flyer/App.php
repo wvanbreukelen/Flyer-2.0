@@ -215,10 +215,15 @@ class App extends Container
 		{
 			foreach ($providerCollection as $provider)
 			{
-				$provider = new $provider;
-				$provider->register();
+				if (class_exists($provider))
+				{
+					$provider = new $provider;
+					$provider->register();
 
-				$this->providers[] = $provider;
+					$this->providers[] = $provider;
+				} else {
+					throw new Exception("Cannot load " . $provider . " because the Service Provider does not exists!");
+				}
 			}
 
 			$this->registerCompilers();

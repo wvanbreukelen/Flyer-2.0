@@ -17,7 +17,7 @@ return array(
 		'Flyer\Components\Router\RouterServiceProvider',
 		'Flyer\Components\View\ViewServiceProvider',
 		'Flyer\Components\Database\DatabaseServiceProvider',
-		'Flyer\Components\Security\SecurityServiceProvider',
+		'Flyer\Components\Security\SecurityServiceProvidersss',
 		
 	),
 
