@@ -4,7 +4,7 @@ class WeatherController extends BaseController
 {
 	public function index()
 	{
-		File::delete(APP . 'test.txt');
+		
 	}
 
 	public function handle()

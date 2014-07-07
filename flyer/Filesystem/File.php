@@ -2,10 +2,10 @@
 
 namespace Flyer\Components\Filesystem;
 
+use Exception;
+
 class File
 {
-
-	protected $fs;
 
 	public function exists($path)
 	{

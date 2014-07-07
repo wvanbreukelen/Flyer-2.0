@@ -11,6 +11,7 @@ return array(
         'Hash' => 'Flyer\Foundation\Facades\Hash',
         'Route' => 'Flyer\Foundation\Facades\Route',
         'File' => 'Flyer\Foundation\Facades\File',
+        'Folder' => 'Flyer\Foundation\Facades\Folder',
 	),
 
 	'serviceProviders' => array(
