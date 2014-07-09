@@ -1,7 +1,7 @@
 Flyer
 =========
 
-A simple to use PHP framework
+A simple to use PHP framework!
 
 ### Notes
 * This framework uses the MVC pattern
