@@ -21,6 +21,7 @@ return array(
 		'Flyer\Components\Database\DatabaseServiceProvider',
 		'Flyer\Components\Security\SecurityServiceProvider',
 		'Flyer\Components\Filesystem\FilesystemServiceProvider',
+		'wvanbreukelen\Test\TestServiceProvider',
 		
 	),
 

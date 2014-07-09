@@ -1,8 +1,5 @@
 <?php
 
-// Weather
-Route::get('weather', 'WeatherController@index');
-Route::post('weather', 'WeatherController@handle');
-Route::any('test', 'WeatherController@index');
-
-
+// Test Controller
+Route::get('test', 'TestController@index');
+Route::get('hello', 'AnotherController@hello');
