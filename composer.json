@@ -11,5 +11,6 @@
     },
     "autoload": {
         "classmap": ["app", "flyer"]
-    }
+    },
+    "minimum-stability": "dev"
 }
