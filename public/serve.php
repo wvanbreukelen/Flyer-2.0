@@ -21,14 +21,5 @@ if (!file_exists('../vendor/autoload.php'))
     die("Please run composer update"); 
 }
 
-require('../vendor/autoload.php');
+require('../bootstrap/bootstrap.php');
 
-// Require the application's bootstrap
-
-require('../flyer/bootstrap.php');
-
-// Exit the application
-
-exit();
-
-// Code under here will not been executed!
