@@ -15,7 +15,6 @@ return array(
 	),
 
 	'serviceProviders' => array(
-		//'Flyer\Components\HTTP\HTTPServiceProvider',
 		'Flyer\Components\Router\RouterServiceProvider',
 		'Flyer\Components\View\ViewServiceProvider',
 		'Flyer\Components\Database\DatabaseServiceProvider',
