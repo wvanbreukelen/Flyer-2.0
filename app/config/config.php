@@ -2,6 +2,8 @@
 
 return array(
 
+	'basePath' => 'http://localhost/Framework/Flyer',
+
 	'classAliases' => array(
         'Request' =>'Symfony\Component\HttpFoundation\Request',
         'Events' => 'Flyer\Foundation\Events\Events',
