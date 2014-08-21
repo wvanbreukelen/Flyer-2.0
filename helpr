@@ -1,7 +1,0 @@
-<?php
-
-$app = require('bootstrap/helpr.php');
-
-$app->setRequestForConsoleEnvironment();
-
-
