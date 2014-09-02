@@ -1,7 +1,5 @@
 <?php
 
-require('../vendor/autoload.php');
-
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Facades\Facade;
 use Flyer\Components\ClassLoader;

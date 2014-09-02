@@ -1,5 +1,7 @@
 <?php
 
+require('../vendor/autoload.php');
+
 // Set error handling
 
 ini_set('display_errors',1);
