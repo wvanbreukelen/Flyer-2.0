@@ -3,7 +3,6 @@
 $config = array(
 	'commands' => array(
 		'Commandr\Commands\TestCommand',
-		'Commandr\Commands\HelloCommand',
 		'Commandr\Commands\HelpCommand',
 	),
 	

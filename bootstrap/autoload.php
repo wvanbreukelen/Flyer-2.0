@@ -2,7 +2,6 @@
 
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Facades\Facade;
-use Flyer\Components\ClassLoader;
 use Flyer\Foundation\Registry;
 use Flyer\Foundation\Config\Config;
 use Flyer\App;
