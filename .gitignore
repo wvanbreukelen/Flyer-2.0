@@ -1,4 +1,5 @@
 /vendor/*
+/FlyerCore/*
 composer.lock
 composer.json
 .gitignore
