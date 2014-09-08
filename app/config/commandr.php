@@ -4,6 +4,7 @@ $config = array(
 	'commands' => array(
 		'Commandr\Commands\TestCommand',
 		'Commandr\Commands\HelpCommand',
+		'Flyer\Components\Router\Console\SimulateRouteCommand',
 	),
 	
 	'errors' => array(
