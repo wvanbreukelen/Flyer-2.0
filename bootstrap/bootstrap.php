@@ -2,11 +2,8 @@
 
 $app = require('autoload.php');
 
-/**
- * Require the route file
- */
-
 require(APP . 'routes.php');
+
 
 /**
  * Boot the application

@@ -2,8 +2,8 @@
 
 class TestController extends BaseController
 {
-	public function index()
+	public function test()
 	{
-		echo "Hi, I am the test controller!";
+		return "Hi, I am the test controller!";
 	}
 }

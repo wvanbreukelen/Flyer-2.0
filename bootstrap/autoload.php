@@ -85,6 +85,7 @@ $app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), f
 
 $app->setViewCompilers(Registry::get('config')['viewCompilers']);
 
+
 /**
  * Attach all of the service providers (specified the config file) to the application
  */
@@ -92,6 +93,7 @@ $app->setViewCompilers(Registry::get('config')['viewCompilers']);
 $app->register(Registry::get('config')['serviceProviders']);
 
 $app->createAliases(Registry::get('config')['classAliases']);
+
 
 
 /**
