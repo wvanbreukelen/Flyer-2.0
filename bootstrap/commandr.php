@@ -74,6 +74,12 @@ $app->createAliases(Registry::get('config')['classAliases']);
 Facade::setFacadeApplication($app);
 $app->attach('app', $app);
 
+/**
+ * Load up the routes file
+ */
+
+require(APP . 'routes.php');
+
 
 $commandr = new Commandr\Core\Application(
 	new Commandr\Core\Input,
