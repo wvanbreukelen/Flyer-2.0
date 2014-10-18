@@ -12,6 +12,7 @@ return array(
         'Route' => 'Flyer\Foundation\Facades\Route',
         'File' => 'Flyer\Foundation\Facades\File',
         'Folder' => 'Flyer\Foundation\Facades\Folder',
+        'Random' => 'Flyer\Foundation\Facades\Random',
 	),
 
 	'serviceProviders' => array(
