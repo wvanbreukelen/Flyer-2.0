@@ -20,6 +20,7 @@ return array(
 		'Flyer\Components\Database\DatabaseServiceProvider',
 		'Flyer\Components\Security\SecurityServiceProvider',
 		'Flyer\Components\Filesystem\FilesystemServiceProvider',
+		'Flyer\Components\Random\RandomServiceProvider',
 		'wvanbreukelen\Test\TestServiceProvider',
 		
 	),
