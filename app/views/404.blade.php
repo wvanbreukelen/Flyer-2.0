@@ -1,3 +1,3 @@
-<h2>Er is iets misgegaan!</h2>
+<h2>Something went wrong!</h2>
 
-<p>De pagina {{{ $page }}} is helaas niet beschrikbaar!</p>
+<p>The page {{{ $page }}} is not availible, please try again later!</p>
