@@ -4,6 +4,6 @@ class HomeController extends BaseController
 {
 	public function index()
 	{
-		return "Dit is de hello pagina!";
+		return "Hello, this is the home controller!";
 	}
 }
