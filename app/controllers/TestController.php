@@ -4,6 +4,6 @@ class TestController extends BaseController
 {
 	public function test()
 	{
-		return "Hi, I am the test controller!";
+		return View::render('hello', array('name' => 'Bob'));
 	}
 }
