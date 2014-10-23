@@ -74,6 +74,8 @@ $app->createAliases(Registry::get('config')['classAliases']);
 Facade::setFacadeApplication($app);
 $app->attach('app', $app);
 
+$app->boot();
+
 /**
  * Load up the routes file
  */
