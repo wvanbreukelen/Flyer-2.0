@@ -13,6 +13,8 @@ return array(
         'File' => 'Flyer\Foundation\Facades\File',
         'Folder' => 'Flyer\Foundation\Facades\Folder',
         'Random' => 'Flyer\Foundation\Facades\Random',
+        'Ftp' => 'Flyer\Foundation\Facades\Ftp',
+        'Ssh' => 'Flyer\Foundation\Facades\Ssh'
 	),
 
 	'serviceProviders' => array(
