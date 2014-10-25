@@ -64,7 +64,7 @@ Events::create(array(
 Events::create(array(
 	'title' => 'application.error.404',
 	'event' => function () {
-		return View::render('404.blade', array('page' => Request::createFromGlobals()->getPathInfo()));
+		return View::render('404', array('page' => Request::createFromGlobals()->getPathInfo()));
 	}
 ));
 
