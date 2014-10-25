@@ -22,6 +22,7 @@ return array(
 		'Flyer\Components\Security\SecurityServiceProvider',
 		'Flyer\Components\Filesystem\FilesystemServiceProvider',
 		'Flyer\Components\Random\RandomServiceProvider',
+		'Flyer\Components\Server\ServerServiceProvider',
 		
 	),
 
