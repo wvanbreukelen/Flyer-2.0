@@ -7,6 +7,7 @@ return array(
         'Events' => 'Flyer\Foundation\Events\Events',
         'Registry' => 'Flyer\Foundation\Registry',
         'App' => 'Flyer\Foundation\Facades\App',
+        'Config' => 'Flyer\Foundation\Facades\Config',
         'View' => 'Flyer\Foundation\Facades\View',
         'Hash' => 'Flyer\Foundation\Facades\Hash',
         'Route' => 'Flyer\Foundation\Facades\Route',
@@ -14,7 +15,7 @@ return array(
         'Folder' => 'Flyer\Foundation\Facades\Folder',
         'Random' => 'Flyer\Foundation\Facades\Random',
         'Ftp' => 'Flyer\Foundation\Facades\Ftp',
-        'Ssh' => 'Flyer\Foundation\Facades\Ssh'
+        'Ssh' => 'Flyer\Foundation\Facades\Ssh',
 	),
 
 	'serviceProviders' => array(
@@ -25,6 +26,7 @@ return array(
 		'Flyer\Components\Filesystem\FilesystemServiceProvider',
 		'Flyer\Components\Random\RandomServiceProvider',
 		'Flyer\Components\Server\ServerServiceProvider',
+		'Flyer\Components\Config\ConfigServiceProvider',
 		
 	),
 
