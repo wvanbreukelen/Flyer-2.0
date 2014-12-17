@@ -1,5 +1,5 @@
-/vendor/*
-/FlyerCore/
-/CommandrCore/*
+/vendor
+/FlyerCore
+/CommandrCore
 composer.lock
 composer.json
