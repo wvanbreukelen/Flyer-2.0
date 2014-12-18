@@ -1,43 +1,46 @@
 <?php
 
+/**
+ * Namespaces that have to been used to get this application running
+ */
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Facades\Facade;
-use Flyer\Foundation\Registry;
 use Flyer\Components\Config;
+use Flyer\Components\Logging\Debugger;
 use Flyer\App;
 
 /**
  * Create a new application
  */
-
 $app = new App(new Config);
 
 /**
- * Set the application registry handler
+ * Set up the Exception handler for the application
  */
-
-$app->setRegistryHandler(new Registry);
-
+$whoops = new Whoops\Run();
+$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+$whoops->register();
 
 /**
- * Require the config files and add those results to the Registry
+ * Require the config files and add those results to the config handler
  */
-
 $app->config()->import(APP . 'config' . DS . 'config.php');
 
-
-Registry::set('config', require(APP . 'config' . DS . 'config.php'));
+/**
+ * Setting the application environment
+ */
+$app->setEnvironment();
 
 /**
- * Setting up the events manager
+ * Set the application debugging handler
  */
+$app->setDebuggerHandler(new Debugger($app->config()));
 
-Registry::set('foundation.events', new Events);
+$app->debugger()->point('init_finished');
 
 /**
- * Setting the current HTTP request to the events manager
+ * Creating a HTTP request that can been actioned by a event
  */
-
 Events::create(array(
 	'title' => 'request.get',
 	'event' => function () {
@@ -45,27 +48,44 @@ Events::create(array(
 	}
 ));
 
+$app->debugger()->point('request_event_done');
 
 /**
- * Initialize the Database component
+ * Creating a new event for handling 404 errors
  */
+Events::create(array(
+	'title' => 'application.error.404',
+	'event' => function () {
+		return View::render('404', array('page' => Request::createFromGlobals()->getPathInfo()));
+	}
+));
 
+$app->debugger()->point('error_event_done');
+$app->debugger()->point('events_done');
+
+/**
+ * Initialize the Illuminate database component
+ */
 $app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
 
-/**
- * Register all of the developed created compilers
- */
-
-$app->setViewCompilers(Registry::get('config')['viewCompilers']);
+$app->debugger()->point('db_init_done');
 
 /**
- * Attach all of the service providers (specified the config file) to the application
+ * Add all the view compilers to the application
  */
+$app->setViewCompilers($app->config()->get('viewCompilers'));
 
-$app->register(Registry::get('config')['serviceProviders']);
+$app->debugger()->point('reg_view_comp_done');
 
-$app->createAliases(Registry::get('config')['classAliases']);
 
+/**
+ * Attach all of the service providers to the application
+ */
+$app->register($app->config()->get('serviceProviders'));
+
+$app->debugger()->point('app_reg_done');
+
+$app->createAliases($app->config()->get('classAliases'));
 
 /**
  * Initialize the facade and setting some things up

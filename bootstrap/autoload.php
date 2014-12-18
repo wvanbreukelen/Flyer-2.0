@@ -5,7 +5,6 @@
  */
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Facades\Facade;
-use Flyer\Foundation\Registry;
 use Flyer\Components\Config;
 use Flyer\Components\Logging\Debugger;
 use Flyer\App;
@@ -16,12 +15,6 @@ use Flyer\App;
 $app = new App(new Config);
 
 /**
- * Set the application registry handler
- */
-$app->setRegistryHandler(new Registry);
-
-
-/**
  * Set up the Exception handler for the application
  */
 $whoops = new Whoops\Run();
@@ -29,16 +22,9 @@ $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
 $whoops->register();
 
 /**
- * Setting up the current request method
- */
-Registry::set('application.request.method', $_SERVER['REQUEST_METHOD']);
-
-/**
- * Require the config files and add those results to the Registry
+ * Require the config files and add those results to the config handler
  */
 $app->config()->import(APP . 'config' . DS . 'config.php');
-
-Registry::set('config', require(APP . 'config' . DS . 'config.php'));
 
 /**
  * Setting the application environment
@@ -51,14 +37,6 @@ $app->setEnvironment();
 $app->setDebuggerHandler(new Debugger($app->config()));
 
 $app->debugger()->point('init_finished');
-
-/**
- * Setting up the events manager
- */
-Registry::set('foundation.events', new Events);
-
-$app->debugger()->point('events_done');
-
 
 /**
  * Creating a HTTP request that can been actioned by a event
@@ -83,6 +61,7 @@ Events::create(array(
 ));
 
 $app->debugger()->point('error_event_done');
+$app->debugger()->point('events_done');
 
 /**
  * Initialize the Illuminate database component
@@ -94,7 +73,7 @@ $app->debugger()->point('db_init_done');
 /**
  * Add all the view compilers to the application
  */
-$app->setViewCompilers(Registry::get('config')['viewCompilers']);
+$app->setViewCompilers($app->config()->get('viewCompilers'));
 
 $app->debugger()->point('reg_view_comp_done');
 
@@ -102,11 +81,11 @@ $app->debugger()->point('reg_view_comp_done');
 /**
  * Attach all of the service providers to the application
  */
-$app->register(Registry::get('config')['serviceProviders']);
+$app->register($app->config()->get('serviceProviders'));
 
 $app->debugger()->point('app_reg_done');
 
-$app->createAliases(Registry::get('config')['classAliases']);
+$app->createAliases($app->config()->get('classAliases'));
 
 $app->debugger()->point('alias_reg_done');
 

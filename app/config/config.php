@@ -10,7 +10,6 @@ return array(
 	'classAliases' => array(
         'Request' =>'Symfony\Component\HttpFoundation\Request',
         'Events' => 'Flyer\Foundation\Events\Events',
-        'Registry' => 'Flyer\Foundation\Registry',
         'App' => 'Flyer\Foundation\Facades\App',
         'Config' => 'Flyer\Foundation\Facades\Config',
         'View' => 'Flyer\Foundation\Facades\View',
@@ -34,7 +33,7 @@ return array(
 		'Flyer\Components\Server\ServerServiceProvider',
 		'Flyer\Components\Config\ConfigServiceProvider',
 		'Flyer\Components\Logging\LoggingServiceProvider'
-		
+
 	),
 
 	'viewCompilers' => array(
