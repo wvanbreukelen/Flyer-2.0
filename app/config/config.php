@@ -2,6 +2,11 @@
 
 return array(
 
+	'environment' => array(
+		'debug' => false,
+		'defaultDebugFolder' => 'debug.log'
+	),
+
 	'classAliases' => array(
         'Request' =>'Symfony\Component\HttpFoundation\Request',
         'Events' => 'Flyer\Foundation\Events\Events',
@@ -37,8 +42,6 @@ return array(
 	),
 
 	'defaultViewCompiler' => 'wvanbreukelen.blade',
-
-	'defaultDebugFolder' => 'debug.log',
 
 	'database' => array(
 		'driver'    => 'mysql',

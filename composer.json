@@ -10,10 +10,6 @@
         }
     ],
     "require": {
-        "symfony/http-foundation": "2.4.*",
-        "filp/whoops": "dev-master",
-        "illuminate/database": "4.1.*@dev",
-        "twig/twig": "1.*",
         "wvanbreukelen/commandr": "dev-master",
         "flyer/core": "dev-master"
     },
