@@ -107,7 +107,6 @@ $app->attach('app', $app);
 $app->debugger()->point('self_app_bind_done');
 $app->debugger()->point('kernel_done');
 
-
 /**
  * Return the application instance back to the bootstrap, so that one can start handling other cool things
  */

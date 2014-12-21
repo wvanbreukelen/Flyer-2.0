@@ -1,13 +1,40 @@
 <?php
 
+/**
+ * In this file you can edit the framework configuration to your own wish
+ */
+
 return array(
 
+	/**
+	 * These environment variables represend the core for your application, they handle general 'framework' stuff
+	 */
 	'environment' => array(
 		'debug' => false,
 		'defaultDebugFolder' => 'debug.log',
 		'url' => 'localhost/workspace/public/',
 	),
 
+	/**
+	 * All the service providers for your application
+	 */
+	'serviceProviders' => array(
+		'Flyer\Components\Router\RouterServiceProvider',
+		'Flyer\Components\View\ViewServiceProvider',
+		'Flyer\Components\Database\DatabaseServiceProvider',
+		'Flyer\Components\Security\SecurityServiceProvider',
+		'Flyer\Components\Filesystem\FilesystemServiceProvider',
+		'Flyer\Components\Random\RandomServiceProvider',
+		'Flyer\Components\Server\ServerServiceProvider',
+		'Flyer\Components\Config\ConfigServiceProvider',
+		'Flyer\Components\Logging\LoggingServiceProvider',
+		'Flyer\Components\HTML\HTMLServiceProvider',
+
+	),
+
+	/**
+	 * The aliases that have to been made for facade and other classes
+	 */
 	'classAliases' => array(
         'Request' =>'Symfony\Component\HttpFoundation\Request',
         'Events' => 'Flyer\Foundation\Events\Events',
@@ -25,26 +52,21 @@ return array(
         'HTML' => 'Flyer\Foundation\Facades\HTML'
 	),
 
-	'serviceProviders' => array(
-		'Flyer\Components\Router\RouterServiceProvider',
-		'Flyer\Components\View\ViewServiceProvider',
-		'Flyer\Components\Database\DatabaseServiceProvider',
-		'Flyer\Components\Security\SecurityServiceProvider',
-		'Flyer\Components\Filesystem\FilesystemServiceProvider',
-		'Flyer\Components\Random\RandomServiceProvider',
-		'Flyer\Components\Server\ServerServiceProvider',
-		'Flyer\Components\Config\ConfigServiceProvider',
-		'Flyer\Components\Logging\LoggingServiceProvider',
-		'Flyer\Components\HTML\HTMLServiceProvider',
-
-	),
-
+	/**
+	 * The view compilers
+	 */
 	'viewCompilers' => array(
 		'wvanbreukelen.blade' => 'wvanbreukelen\Blade\BladeEngine',
 	),
 
+	/**
+	 * The default view compiler for compiling any view
+	 */
 	'defaultViewCompiler' => 'wvanbreukelen.blade',
 
+	/**
+	 * Database configuration settings (see Illuminate/Database)
+	 */
 	'database' => array(
 		'driver'    => 'mysql',
 		'host'      => 'localhost',
@@ -56,6 +78,9 @@ return array(
 		'prefix'    => '',
 	),
 
+	/**
+	 * All the debug messages for the application, add one if you need :)
+	 */
 	'debugMessages' => array(
 		'init_finished' => 'The application has been inited!',
 		'events_done' => 'The event manager has been registered to the application',

@@ -1,1 +1,1 @@
-The current UNIX timestamp is {{{ $name }}}
+The current UNIX timestamp is {{{ $timestamp }}}

@@ -16,25 +16,26 @@ class BladeEngine extends Compiler
 	public function compile($contents, $view, array $values = array())
 	{
 		$this->blade = new BladeCompiler();
-		$this->contents = $this->blade->compile($contents);
+		$output = $this->blade->compile($contents);
 
-		if (!File::exists(APP . 'storage/cache' . DS .$view . '.php'))
+		$path = APP . 'storage/cache' . DS .$view . '.php';
+
+		if (!File::exists($path))
 		{
-			File::write(APP . 'storage/cache' . DS . $view . '.php', $this->contents);
-		} else if ($this->contents != file_get_contents(APP . 'storage/cache' . DS . $view . '.php')) {
-			File::write(APP . 'storage/cache' . DS . $view . '.php', $this->contents);
+			File::write($path, $output);
+		} else if ($output != File::contents($path)) {
+			File::write($path, $output);
 		}
 
-		return $this->build(APP . 'storage/cache' . DS . $view . '.php', $values);
+		return $this->build($path, $values);
 	}
 
 	protected function build($path, $values)
 	{
 		ob_start();
-
 		extract($values);
 		include($path);
-
+		
 		return ltrim(ob_get_clean());
 	}
 }
