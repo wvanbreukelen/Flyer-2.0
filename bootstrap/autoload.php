@@ -19,6 +19,7 @@ $app = new App(new Config);
  */
 $whoops = new Whoops\Run();
 $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+
 $whoops->register();
 
 /**
@@ -35,8 +36,15 @@ $app->setEnvironment();
  * Set the application debugging handler
  */
 $app->setDebuggerHandler(new Debugger($app->config()));
-
 $app->debugger()->point('init_finished');
+
+/**
+ * Set the facade application
+ */
+
+Facade::setFacadeApplication($app);
+$app->debugger()->point('facade_app_done');
+
 
 /**
  * Creating a HTTP request that can been actioned by a event
@@ -51,30 +59,32 @@ Events::create(array(
 $app->debugger()->point('request_event_done');
 
 /**
- * Creating a new event for handling 404 errors
+ * Bind the default http 404 error page to the application
  */
-Events::create(array(
-	'title' => 'application.error.404',
-	'event' => function () {
-		return View::render('404', array('page' => Request::createFromGlobals()->getPathInfo()));
-	}
-));
+
+$app->bind('application.error.404', function()
+{
+	return View::render('404', array('page' => Request::createFromGlobals()->getPathInfo()));
+});
 
 $app->debugger()->point('error_event_done');
-$app->debugger()->point('events_done');
+
+/**
+ * Import the file with additional bindings
+ */
+
+require(APP . 'bindings' . DS . 'bindings.php');
 
 /**
  * Initialize the Illuminate database component
  */
 $app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
-
 $app->debugger()->point('db_init_done');
 
 /**
  * Add all the view compilers to the application
  */
 $app->setViewCompilers($app->config()->get('viewCompilers'));
-
 $app->debugger()->point('reg_view_comp_done');
 
 
@@ -82,22 +92,10 @@ $app->debugger()->point('reg_view_comp_done');
  * Attach all of the service providers to the application
  */
 $app->register($app->config()->get('serviceProviders'));
-
 $app->debugger()->point('app_reg_done');
 
 $app->createAliases($app->config()->get('classAliases'));
-
 $app->debugger()->point('alias_reg_done');
-
-
-
-/**
- * Initialize the facades and setting some things for them up
- */
-Facade::setFacadeApplication($app);
-
-$app->debugger()->point('facade_app_done');
-
 /**
  * Attach the current app instance to the container
  */

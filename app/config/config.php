@@ -4,7 +4,8 @@ return array(
 
 	'environment' => array(
 		'debug' => false,
-		'defaultDebugFolder' => 'debug.log'
+		'defaultDebugFolder' => 'debug.log',
+		'url' => 'localhost/workspace/public/',
 	),
 
 	'classAliases' => array(
@@ -21,6 +22,7 @@ return array(
         'Random' => 'Flyer\Foundation\Facades\Random',
         'Ftp' => 'Flyer\Foundation\Facades\Ftp',
         'Ssh' => 'Flyer\Foundation\Facades\Ssh',
+        'HTML' => 'Flyer\Foundation\Facades\HTML'
 	),
 
 	'serviceProviders' => array(
@@ -32,7 +34,8 @@ return array(
 		'Flyer\Components\Random\RandomServiceProvider',
 		'Flyer\Components\Server\ServerServiceProvider',
 		'Flyer\Components\Config\ConfigServiceProvider',
-		'Flyer\Components\Logging\LoggingServiceProvider'
+		'Flyer\Components\Logging\LoggingServiceProvider',
+		'Flyer\Components\HTML\HTMLServiceProvider',
 
 	),
 
