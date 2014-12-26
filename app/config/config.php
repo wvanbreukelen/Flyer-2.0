@@ -10,7 +10,7 @@ return array(
 	 * These environment variables represend the core for your application, they handle general 'framework' stuff
 	 */
 	'environment' => array(
-		'debug' => false,
+		'debug' => true,
 		'defaultDebugFolder' => 'debug.log',
 		'url' => 'localhost/workspace/public/',
 	),

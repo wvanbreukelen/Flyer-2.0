@@ -49,12 +49,11 @@ $app->debugger()->point('facade_app_done');
 /**
  * Creating a HTTP request that can been actioned by a event
  */
-Events::create(array(
-	'title' => 'request.get',
-	'event' => function () {
-		return Request::createFromGlobals();
-	}
-));
+
+$app->bind('request.get', function ()
+{
+	return Request::createFromGlobals();
+});
 
 $app->debugger()->point('request_event_done');
 
