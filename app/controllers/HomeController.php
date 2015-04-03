@@ -2,8 +2,8 @@
 
 class HomeController extends BaseController
 {
-	public function index()
+	public function index($arg1, $arg2)
 	{
-		return "Hello, this is the home controller!";
+		return "Welcome to our app!";
 	}
 }

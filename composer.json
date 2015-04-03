@@ -13,10 +13,7 @@
         "wvanbreukelen/commandr": "dev-master",
         "flyer/core": "dev-master"
     },
-    "require-dev": {
-        "phpunit/phpunit": "4.1.*"
-    },
     "autoload": {
-        "classmap": ["app", "FlyerCore", "CommandrCore"]
+        "classmap": ["app", "FlyerCore"]
     }
 }

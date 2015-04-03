@@ -1,20 +1,32 @@
 <?php
 
+/**
+ * Setting up error reporting
+ */
 
-// Set error handling
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
 error_reporting(-1);
 
-// Define the path constances
+/**
+ * Defining the path constances
+ */
 
 define('DS', DIRECTORY_SEPARATOR);
-
 define('ROOT', getcwd() . DS);
+
 define('APP', ROOT . 'app' . DS);
 
+/**
+ * Require the composer autoloader for loading our dependencies
+ */
+
 require('vendor/autoload.php');
+
+/**
+ * Run the Commandr bootstrap file
+ */
 
 require('bootstrap/commandr.php');
 

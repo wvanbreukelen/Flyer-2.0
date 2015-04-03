@@ -9,6 +9,7 @@ $config = array(
 		'Commandr\Commands\HelpCommand',
 		'Flyer\Components\Router\Console\SimulateRouteCommand',
 		'Flyer\Components\Router\Console\RouteListCommand',
+		'Flyer\Components\Package\PackageInstallCommand',
 	),
 	
 	/**
