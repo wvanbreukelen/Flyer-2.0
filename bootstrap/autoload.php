@@ -10,11 +10,7 @@ use Flyer\App;
  * Create a new Flyer application, with a config instance
  */
 
-$app = new App();
-
-$app->setConfig(new Config);
-
-
+$app = new App(new Config);
 
 
 /**
@@ -32,15 +28,13 @@ $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
 
 $whoops->register();
 
-require_once($app->basePath() . 'FlyerCore/flyer/Foundation/helpers.php');
-
 
 /**
  * Require the needed config files
  */
 
 
-$app->config()->import(config_path() . 'config.php');
+$app->config()->import(APP . 'config' . DS . 'config.php');
 
 
 /**
@@ -100,7 +94,7 @@ $app->debugger()->point('error_event_done');
  */
 
 
-require(bindings_path() . 'bindings.php');
+require(APP . 'bindings' . DS . 'bindings.php');
 
 
 /**
@@ -108,7 +102,7 @@ require(bindings_path() . 'bindings.php');
  */
 
 
-//$app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
+$app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
 $app->debugger()->point('db_init_done');
 
 
@@ -119,6 +113,7 @@ $app->debugger()->point('db_init_done');
 
 $app->setViewCompilers($app->config()->get('viewCompilers'));
 $app->debugger()->point('reg_view_comp_done');
+
 
 /**
  * Attach all of the service providers to the application
