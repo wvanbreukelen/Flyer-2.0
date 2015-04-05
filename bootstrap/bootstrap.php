@@ -15,7 +15,7 @@ $app = require('autoload.php');
 
 $app->debugger()->point('loading_routes');
 
-require(APP . 'routes.php');
+require(app_path() . 'routes.php');
 
 $app->debugger()->point('loading_routes_done');
 
