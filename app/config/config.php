@@ -11,7 +11,7 @@ return array(
 	 */
 	
 	'environment' => array(
-		'debug' 		   => false,
+		'debug' 		   => true,
 		'defaultDebugFile' => 'debug.log',
 		'url'        	   => 'localhost/workspace/public/',
 	),
@@ -23,14 +23,12 @@ return array(
 	'serviceProviders' => array(
 		'Flyer\Components\Router\RouterServiceProvider',
 		'Flyer\Components\View\ViewServiceProvider',
-		'Flyer\Components\Database\DatabaseServiceProvider',
 		'Flyer\Components\Security\SecurityServiceProvider',
 		'Flyer\Components\Filesystem\FilesystemServiceProvider',
 		'Flyer\Components\Random\RandomServiceProvider',
 		'Flyer\Components\Server\ServerServiceProvider',
 		'Flyer\Components\Config\ConfigServiceProvider',
 		'Flyer\Components\Logging\LoggingServiceProvider',
-		'Flyer\Components\HTML\HTMLServiceProvider',
 
 	),
 
