@@ -32,7 +32,7 @@ $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
 
 $whoops->register();
 
-require_once($app->basePath() . 'FlyerCore/flyer/Foundation/helpers.php');
+require_once($app->basePath() . 'app/helpers.php');
 
 
 /**
