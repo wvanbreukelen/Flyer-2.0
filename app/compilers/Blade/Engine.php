@@ -18,7 +18,7 @@ class BladeEngine extends Compiler
 		$this->blade = new BladeCompiler();
 		$output = $this->blade->compile($contents);
 
-		$path = APP . 'storage/cache' . DS .$view . '.php';
+		$path = app_path() . 'storage/cache/' . $view . '.php';
 
 		if (!File::exists($path))
 		{
