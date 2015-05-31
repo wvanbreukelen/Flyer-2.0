@@ -4,13 +4,11 @@
  * The helper functions all available in the whole application, when requiring them
  */
 
-use Flyer\App;
-
 if (!function_exists('app'))
 {
 	function app($parameter)
 	{
-		return App::getInstance()->make($parameter);
+		return Flyer\App::getInstance()->make($parameter);
 	}
 }
 

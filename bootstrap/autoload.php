@@ -14,34 +14,16 @@ $app = new App();
 
 $app->setConfig(new Config);
 
-
-
-
-/**
- * Set up the Whoops exception handler for the application
- */
-
-
-$whoops = new Whoops\Run();
-$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
-
-
-/**
- * Register the Whoops exception handler into PHP
- */
-
-$whoops->register();
-
-require_once($app->basePath() . 'app/helpers.php');
-
-
 /**
  * Require the needed config files
  */
 
 
-$app->config()->import(config_path() . 'config.php');
+$app->config()->import($app->path() . 'config/config.php');
 
+$app->setDebuggerHandler(new Debugger($app->config()));
+
+require_once($app->basePath() . 'app/helpers.php');
 
 /**
  * Setting the application environment, by example; browser or CLI
@@ -52,11 +34,33 @@ $app->setEnvironment();
 
 
 /**
+ * Set up Exceptionizer for the application
+ */
+
+$ec = new Exceptionizer();
+
+//$ec->addImplementor(new Exceptionizer\Implement\WhoopsImplementor);
+$ec->addImplementor(new Flyer\Components\Logging\LoggingImplementor);
+
+$ec->register();
+
+throw new Exception("hello!");
+
+
+
+
+
+
+
+
+
+
+/**
  * Set the application debugging handler
  */
 
 
-$app->setDebuggerHandler(new Debugger($app->config()));
+
 $app->debugger()->point('init_finished');
 
 
