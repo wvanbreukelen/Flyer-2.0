@@ -12,16 +12,27 @@ use Flyer\App;
 
 $app = new App();
 
+/**
+ * Set the application config instance
+ */
+
 $app->setConfig(new Config);
 
 /**
  * Require the needed config files
  */
 
-
 $app->config()->import($app->path() . 'config/config.php');
 
+/**
+ * Set the debugger handler for debugging
+ */
+
 $app->setDebuggerHandler(new Debugger($app->config()));
+
+/**
+ * Implement the helpers into the application
+ */
 
 require_once($app->basePath() . 'app/helpers.php');
 
@@ -29,9 +40,9 @@ require_once($app->basePath() . 'app/helpers.php');
  * Setting the application environment, by example; browser or CLI
  */
 
-
 $app->setEnvironment();
 
+$app->debugger()->point('init_exceptions');
 
 /**
  * Set up Exceptionizer for the application
@@ -39,27 +50,30 @@ $app->setEnvironment();
 
 $ec = new Exceptionizer();
 
-//$ec->addImplementor(new Exceptionizer\Implement\WhoopsImplementor);
+/**
+ * Adding some implementors to Exceptionizer
+ */
+
+$app->debugger()->point('reg_implements');
+
 $ec->addImplementor(new Flyer\Components\Logging\LoggingImplementor);
+$ec->addImplementor(new Exceptionizer\Implement\WhoopsImplementor);
+
+
+$app->debugger()->point('reg_handlers');
+
+/**
+ * Register the Exceptionizer handlers
+ */
 
 $ec->register();
 
-throw new Exception("hello!");
-
-
-
-
-
-
-
-
+$app->debugger()->point('reg_handlers_done');
 
 
 /**
  * Set the application debugging handler
  */
-
-
 
 $app->debugger()->point('init_finished');
 
@@ -77,6 +91,7 @@ $app->debugger()->point('facade_app_done');
  * Creating a HTTP request that can been called by triggering the event
  */
 
+$app->debugger()->point('request_event');
 
 $app->bind('request.get', function ()
 {
@@ -99,12 +114,16 @@ $app->bind('application.error.404', function()
 $app->debugger()->point('error_event_done');
 
 
+$app->debugger()->point('imp_bindings');
+
 /**
  * Import the file with additional bindings
  */
 
 
 require(bindings_path() . 'bindings.php');
+
+$app->debugger()->point('imp_bindings_done');
 
 
 /**
@@ -113,7 +132,7 @@ require(bindings_path() . 'bindings.php');
 
 
 //$app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
-$app->debugger()->point('db_init_done');
+//$app->debugger()->point('db_init_done');
 
 
 /**
@@ -154,7 +173,6 @@ $app->debugger()->point('self_app_bind_done');
 /**
  * Some final debug messages
  */
-
 
 $app->debugger()->point('kernel_done');
 
