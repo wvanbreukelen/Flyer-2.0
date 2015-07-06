@@ -19,6 +19,12 @@ $app = new App();
 $app->setConfig(new Config);
 
 /**
+ * Setting the application environment, by example; browser or CLI
+ */
+
+$app->setEnvironment();
+
+/**
  * Require the needed config files
  */
 
@@ -36,11 +42,6 @@ $app->setDebuggerHandler(new Debugger($app->config()));
 
 require_once($app->basePath() . 'app/helpers.php');
 
-/**
- * Setting the application environment, by example; browser or CLI
- */
-
-$app->setEnvironment();
 
 $app->debugger()->point('init_exceptions');
 
@@ -147,7 +148,7 @@ $app->debugger()->point('reg_view_comp_done');
  * Attach all of the service providers to the application
  */
 
-
+$app->debugger()->point('app_reg');
 $app->register($app->config()->get('serviceProviders'));
 $app->debugger()->point('app_reg_done');
 
@@ -156,7 +157,7 @@ $app->debugger()->point('app_reg_done');
  * Creating the aliases that where defined in the config
  */
 
-
+$app->debugger()->point('alias_reg');
 $app->createAliases($app->config()->get('classAliases'));
 $app->debugger()->point('alias_reg_done');
 

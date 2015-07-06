@@ -8,7 +8,7 @@
 $app = require('autoload.php');
 
 
-/** 
+/**
  * Load all the routes specified in the app folder
  */
 

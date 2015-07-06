@@ -9,9 +9,9 @@ return array(
 	/**
 	 * These environment variables represend the core for your application, they handle general 'framework' stuff
 	 */
-	
+
 	'environment' => array(
-		'debug' 		   => true,
+		'debug' 		   => false,
 		'defaultDebugFile' => 'debug.log',
 		'url'        	   => 'localhost/workspace/public/',
 	),
@@ -19,7 +19,7 @@ return array(
 	/**
 	 * All the service providers for your application
 	 */
-	
+
 	'serviceProviders' => array(
 		'Flyer\Components\Router\RouterServiceProvider',
 		'Flyer\Components\View\ViewServiceProvider',
@@ -35,7 +35,7 @@ return array(
 	/**
 	 * The aliases that have to been made for facade and other classes
 	 */
-	
+
 	'classAliases' => array(
         'Request' => 'Symfony\Component\HttpFoundation\Request',
         'Events'  => 'Flyer\Foundation\Events\Events',
@@ -56,7 +56,7 @@ return array(
 	/**
 	 * The view compilers
 	 */
-	
+
 	'viewCompilers' => array(
 		'wvanbreukelen.blade' => 'wvanbreukelen\Blade\BladeEngine',
 	),
@@ -64,13 +64,13 @@ return array(
 	/**
 	 * The default view compiler for compiling any view
 	 */
-	
+
 	'defaultViewCompiler' => 'wvanbreukelen.blade',
 
 	/**
 	 * Database configuration settings (see Illuminate/Database)
 	 */
-	
+
 	'database' => array(
 		'driver'    => 'mysql',
 		'host'      => 'localhost',
@@ -85,7 +85,7 @@ return array(
 	/**
 	 * All the debug messages for the application, add one if you need :)
 	 */
-	
+
 	'debugMessages' => array(
 		'init_exceptions'     => 'Setting up Exceptionizer...',
 		'reg_implements'      => 'Adding implements to Exceptionizer...',
@@ -100,7 +100,9 @@ return array(
 		'imp_bindings_done'   => 'Successfully imported application bindings',
 		'db_init_done'        => 'The illimunate\database component has been initialized',
 		'reg_view_comp_done'  => 'All the view compilers have been registered to the view component',
+		'app_reg'			  => 'Registering service providers...',
 		'app_reg_done'        => 'All the application attached packages have been autoloaded/registered',
+		'alias_reg'           => 'Registering aliases...',
 		'alias_reg_done'      => 'All the aliases have been created for the selected packages in the app config file',
 		'facade_app_done' 	  => 'Mocked the facade require app instance',
 		'self_app_bind_done'  => 'The current app instance has been binded to the App variable',

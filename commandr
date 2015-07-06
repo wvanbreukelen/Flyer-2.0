@@ -1,32 +1,69 @@
 <?php
 
 /**
- * Setting up error reporting
+ * Setting up envirorment for console applications
  */
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
-error_reporting(-1);
+define("ENV_CONSOLE", true);
 
 /**
- * Defining the path constances
- */
-
-define('DS', DIRECTORY_SEPARATOR);
-define('ROOT', getcwd() . DS);
-
-define('APP', ROOT . 'app' . DS);
-
-/**
- * Require the composer autoloader for loading our dependencies
+ * Require the composer autoloader for autoloading our dependencies
  */
 
 require('vendor/autoload.php');
 
 /**
- * Run the Commandr bootstrap file
+ * Autoload the framework and get a fresh prepared application instance returned
  */
 
-require('bootstrap/commandr.php');
+$app = require('bootstrap/autoload.php');
 
+/**
+ * Load up the routes file in the app folder
+ */
+
+require($app->appPath() . 'routes.php');
+
+/**
+ * Boot the application
+ */
+
+$app->boot();
+
+/**
+ * Create a new Commandr instance
+ */
+
+$commandr = new Commandr\Core\Application(
+	new Commandr\Core\Input,
+	new Commandr\Core\Output,
+	new Commandr\Core\Dialog,
+	'Commandr Console helping application',
+	'1.0'
+);
+
+/**
+ * Set the commandr config file
+ */
+
+$config = new Commandr\Core\Config(require($app->configPath() . 'commandr.php'));
+
+$commandr->setConfig($config);
+
+/**
+ * Add the commands from the config file to Commandr
+ */
+
+$commandr->addCommands($config->get('commands'));
+
+/**
+ * Match the given input with one of the registered commands
+ */
+
+$commandr->match();
+
+/**
+ * Run Commandr
+ */
+
+$commandr->run(new Commandr\Core\Output());

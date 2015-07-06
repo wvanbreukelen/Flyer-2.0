@@ -1,0 +1,23 @@
+<?php
+
+// Including the Zermelo API PHP
+//require('Zermelo.php');
+
+// Create a new Zermelo instance
+//$zermelo = new ZermeloAPI('YOURSCHOOL');
+
+require('Cache.php');
+require('Zermelo.php');
+
+$zermelo = new ZermeloAPI('griftland');
+
+$grid = $zermelo->getStudentGridAhead('120259', 1);
+
+//print_r($zermelo->resolveTeacherClasses($grid, 'sck'));
+
+foreach ($zermelo->resolveCancelledClasses($grid) as $lesson)
+{
+	print_r($lesson);
+
+	echo "<br /><br />";
+}

@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Namespaces that have to been used to get this application running
- */
 use Flyer\Foundation\Events\Events;
 use Flyer\Foundation\Facades\Facade;
 use Flyer\Components\Config;
@@ -10,89 +7,188 @@ use Flyer\Components\Logging\Debugger;
 use Flyer\App;
 
 /**
- * Create a new application
+ * Create a new Flyer application, with a config instance
  */
-$app = new App(new Config);
+
+$app = new App();
+
+//$app->setBasePath(getcwd());
+
+$app->runAsConsole();
 
 /**
- * Set up the Exception handler for the application
+ * Set the application config instance
  */
-$whoops = new Whoops\Run();
-$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
-$whoops->register();
+
+$app->setConfig(new Config);
 
 /**
- * Require the config files and add those results to the config handler
+ * Require the needed config files
  */
-$app->config()->import(APP . 'config' . DS . 'config.php');
+
+$app->config()->import($app->path() . 'config/config.php');
 
 /**
- * Setting the application environment
+ * Set the debugger handler for debugging
  */
+
+$app->setDebuggerHandler(new Debugger($app->config()));
+
+/**
+ * Implement the helpers into the application
+ */
+
+require_once($app->basePath() . 'app/helpers.php');
+
+/**
+ * Setting the application environment, by example; browser or CLI
+ */
+
 $app->setEnvironment();
+
+$app->debugger()->point('init_exceptions');
+
+/**
+ * Set up Exceptionizer for the application
+ */
+
+$ec = new Exceptionizer();
+
+/**
+ * Adding some implementors to Exceptionizer
+ */
+
+$app->debugger()->point('reg_implements');
+
+$ec->addImplementor(new Flyer\Components\Logging\LoggingImplementor);
+$ec->addImplementor(new Exceptionizer\Implement\WhoopsImplementor);
+
+
+$app->debugger()->point('reg_handlers');
+
+/**
+ * Register the Exceptionizer handlers
+ */
+
+$ec->register();
+
+$app->debugger()->point('reg_handlers_done');
+
 
 /**
  * Set the application debugging handler
  */
-$app->setDebuggerHandler(new Debugger($app->config()));
 
 $app->debugger()->point('init_finished');
 
+
 /**
- * Creating a HTTP request that can been actioned by a event
+ * Set the application instance that the facade handler has to use
  */
-Events::create(array(
-	'title' => 'request.get',
-	'event' => function () {
-		return Request::createFromGlobals();
-	}
-));
+
+
+Facade::setFacadeApplication($app);
+$app->debugger()->point('facade_app_done');
+
+
+/**
+ * Creating a HTTP request that can been called by triggering the event
+ */
+
+$app->debugger()->point('request_event');
+
+$app->bind('request.get', function ()
+{
+	return Request::createFromGlobals();
+});
 
 $app->debugger()->point('request_event_done');
 
+
 /**
- * Creating a new event for handling 404 errors
+ * Bind the default error page to the application
  */
-Events::create(array(
-	'title' => 'application.error.404',
-	'event' => function () {
-		return View::render('404', array('page' => Request::createFromGlobals()->getPathInfo()));
-	}
-));
+
+$app->bind('application.error.404', function()
+{
+	return View::render('404', array('page' => Request::createFromGlobals()->getPathInfo()));
+});
 
 $app->debugger()->point('error_event_done');
-$app->debugger()->point('events_done');
+$app->debugger()->point('imp_bindings');
 
 /**
- * Initialize the Illuminate database component
+ * Import the file with additional bindings
  */
-$app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
 
-$app->debugger()->point('db_init_done');
+
+require(bindings_path() . 'bindings.php');
+
+$app->debugger()->point('imp_bindings_done');
+
 
 /**
- * Add all the view compilers to the application
+ * Lets start up the database component by creating an alias for the illuminate/database package
  */
+
+
+//$app->createAliases(array('Eloquent' => 'Illuminate\Database\Eloquent\Model'), false);
+//$app->debugger()->point('db_init_done');
+
+
+/**
+ * Add the view compilers to the application
+ */
+
+
 $app->setViewCompilers($app->config()->get('viewCompilers'));
-
 $app->debugger()->point('reg_view_comp_done');
-
 
 /**
  * Attach all of the service providers to the application
  */
-$app->register($app->config()->get('serviceProviders'));
 
+$app->debugger()->point('app_reg');
+$app->register($app->config()->get('serviceProviders'));
 $app->debugger()->point('app_reg_done');
 
-$app->createAliases($app->config()->get('classAliases'));
 
 /**
- * Initialize the facade and setting some things up
+ * Creating the aliases that where defined in the config
  */
 
-Facade::setFacadeApplication($app);
+$app->debugger()->point('alias_reg');
+$app->createAliases($app->config()->get('classAliases'));
+$app->debugger()->point('alias_reg_done');
+
+
+/**
+ * Attach the current app instance to the container
+ */
+
+
 $app->attach('app', $app);
+$app->debugger()->point('self_app_bind_done');
+
+
+/**
+ * Some final debug messages
+ */
+
+$app->debugger()->point('kernel_done');
+
+
+/**
+ * Return the application instance back to the bootstrap, so that one can start handling other cool things
+ */
+
+
+$app->debugger()->point('return_app_inst');
+
+
+/**
+ * Return the app instance back to the bootstrap
+ */
 
 $app->boot();
 
@@ -100,7 +196,7 @@ $app->boot();
  * Load up the routes file
  */
 
-require(APP . 'routes.php');
+require($app->appPath() . 'routes.php');
 
 
 $commandr = new Commandr\Core\Application(
@@ -111,7 +207,7 @@ $commandr = new Commandr\Core\Application(
 	'1.0'
 );
 
-$config = new Commandr\Core\Config(require(APP . 'config' . DS . 'commandr.php'));
+$config = new Commandr\Core\Config(require($app->configPath() . 'commandr.php'));
 
 $commandr->setConfig($config);
 
