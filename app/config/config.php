@@ -11,7 +11,7 @@ return array(
 	 */
 
 	'environment' => array(
-		'debug' 		   => false,
+		'debug' 		   => true,
 		'defaultDebugFile' => 'debug.log',
 		'url'        	   => 'localhost/workspace/public/',
 	),

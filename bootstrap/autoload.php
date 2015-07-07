@@ -85,6 +85,7 @@ $app->debugger()->point('init_finished');
 
 
 Facade::setFacadeApplication($app);
+s;
 $app->debugger()->point('facade_app_done');
 
 

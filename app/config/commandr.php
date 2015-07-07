@@ -10,8 +10,10 @@ $config = array(
 		'Flyer\Components\Router\Console\SimulateRouteCommand',
 		'Flyer\Components\Router\Console\RouteListCommand',
 		'Flyer\Components\Package\PackageInstallCommand',
+		'Flyer\Foundation\Console\ListPackagesCommand',
+		'Flyer\Components\Filesystem\Console\CleanCommand',
 	),
-	
+
 	/**
 	 * The errors for the commandr core
 	 */
