@@ -29,7 +29,6 @@ return array(
 		'Flyer\Components\Server\ServerServiceProvider',
 		'Flyer\Components\Config\ConfigServiceProvider',
 		'Flyer\Components\Logging\LoggingServiceProvider',
-
 	),
 
 	/**
