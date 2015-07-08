@@ -110,7 +110,7 @@ $app->debugger()->point('imp_bindings_done');
 
 
 /**
- * Lets start up the database component by creating an alias for the illuminate/database package
+ * NOT USING Lets start up the database component by creating an alias for the illuminate/database package
  */
 
 // NOTICE: Can this be handled by a facade? @wvanbreukelen
