@@ -12,5 +12,5 @@ $app->bind('application.error.500', function()
 
 
 /**
- * Add any other error bindings down here!
+ * Add any other bindings down here!
  */

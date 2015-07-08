@@ -25,7 +25,7 @@ $app->setConfig(new Config);
 $app->setEnvironment();
 
 /**
- * Require the needed config files
+ * Require the needed config files in the application
  */
 
 $app->config()->import($app->path() . 'config/config.php');
@@ -144,7 +144,6 @@ $app->debugger()->point('alias_reg_done');
 /**
  * Attach the current app instance to the container
  */
-
 
 $app->attach('app', $app);
 $app->debugger()->point('self_app_bind_done');

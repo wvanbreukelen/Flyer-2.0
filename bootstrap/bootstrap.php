@@ -23,18 +23,19 @@ $app->debugger()->point('end');
 
 /**
  * Let's boot up the application so a couple of events can been triggered
+ * If you want to call in some stuff before the final response is return, please add it here
  */
 
 $app->boot();
 
 /**
- * If you want to call in some stuff before the final response is return, please add it here
- */
-
-/**
- * Shutdown the application and return the results to the user. Code under this line will not be executed!
+ * Shutdown the application and return the results to the user.
  */
 
 echo $app->shutdown();
+
+/**
+ * Just to be sure, shutdown the application by triggering exit
+ */
 
 exit();
