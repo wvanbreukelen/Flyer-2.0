@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setting up envirorment for console applications
+ * Setting up enviroment for console applications
  */
 
 define("ENV_CONSOLE", true);
@@ -31,39 +31,13 @@ require($app->appPath() . 'routes.php');
 $app->boot();
 
 /**
- * Create a new Commandr instance
+ * Shutdown the console application to return the console output back to the user
  */
 
-$commandr = new Commandr\Core\Application(
-	new Commandr\Core\Input,
-	new Commandr\Core\Output,
-	new Commandr\Core\Dialog,
-	'Commandr Console helping application',
-	'1.0'
-);
+$app->shutdown();
 
 /**
- * Set the commandr config file
+ * Done! Exit the application just to be sure
  */
 
-$config = new Commandr\Core\Config(require($app->configPath() . 'commandr.php'));
-
-$commandr->setConfig($config);
-
-/**
- * Add the commands from the config file to Commandr
- */
-
-$commandr->addCommands($config->get('commands'));
-
-/**
- * Match the given input with one of the registered commands
- */
-
-$commandr->match();
-
-/**
- * Run Commandr
- */
-
-$commandr->run(new Commandr\Core\Output());
+exit();
