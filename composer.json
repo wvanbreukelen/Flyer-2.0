@@ -11,7 +11,7 @@
     ],
     "require": {
         "wvanbreukelen/commandr": "dev-master",
-        "flyer/core": "dev-master",
+        "flyer/core": "1.3.*",
         "wvanbreukelen/exceptionizer": "dev-master"
     },
     "autoload": {
