@@ -13,14 +13,13 @@ A simple to use PHP framework!
 It's very easy to install the Flyer Framework!
 Steps:
 
-1. Clone this repository, the master or alpha branch.
-2. Open a command window (Terminal, CMD, etc.) and type
-```bash
-composer update
+1. Open a console window
+2. Enter the following
 ```
-This will install the required dependencies and generate the autoload files
-3. Done, enjoy!
-
+composer create-project flyer/framework 1.1.*
+```
+3. Wait to complete
+4. Done! Starting writing your app
 ### Routing
 
 The Routing component in the Flyer Framework make it easy to create route. it is inspired by Taylor Otwell's Laravel Routing engine. You specify your routes in the routes.php file (located in the app folder) 
