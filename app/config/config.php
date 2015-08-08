@@ -37,20 +37,21 @@ return array(
 	 */
 
 	'classAliases' => array(
-        'Request' => 'Symfony\Component\HttpFoundation\Request',
-        'Events'  => 'Flyer\Foundation\Events\Events',
-        'App'     => 'Flyer\Foundation\Facades\App',
-        'Config'  => 'Flyer\Foundation\Facades\Config',
-        'View'    => 'Flyer\Foundation\Facades\View',
-        'Hash'    => 'Flyer\Foundation\Facades\Hash',
-        'Route'   => 'Flyer\Foundation\Facades\Route',
-        'File'    => 'Flyer\Foundation\Facades\File',
-        'Folder'  => 'Flyer\Foundation\Facades\Folder',
-        'Log'     => 'Flyer\Foundation\Facades\Log',
-        'Random'  => 'Flyer\Foundation\Facades\Random',
-        'Ftp'     => 'Flyer\Foundation\Facades\Ftp',
-        'Ssh'     => 'Flyer\Foundation\Facades\Ssh',
-        'HTML'    => 'Flyer\Foundation\Facades\HTML'
+        'Request'  => 'Symfony\Component\HttpFoundation\Request',
+        'Events'   => 'Flyer\Foundation\Events\Events',
+        'App'      => 'Flyer\Foundation\Facades\App',
+        'Config'   => 'Flyer\Foundation\Facades\Config',
+        'View'     => 'Flyer\Foundation\Facades\View',
+        'Hash'     => 'Flyer\Foundation\Facades\Hash',
+        'Route'    => 'Flyer\Foundation\Facades\Route',
+        'File'     => 'Flyer\Foundation\Facades\File',
+        'Folder'   => 'Flyer\Foundation\Facades\Folder',
+        'Log'      => 'Flyer\Foundation\Facades\Log',
+        'Random'   => 'Flyer\Foundation\Facades\Random',
+        'Ftp'      => 'Flyer\Foundation\Facades\Ftp',
+        'Ssh'      => 'Flyer\Foundation\Facades\Ssh',
+        'HTML'     => 'Flyer\Foundation\Facades\HTML',
+		'Debugger' => 'Flyer\Foundation\Facades\Debugger',
 	),
 
 	/**
