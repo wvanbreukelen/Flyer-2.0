@@ -28,27 +28,27 @@ Below some examples:
 
 ###### GET route
 ```php
-Route::get('', 'WeatherController@index');
+Route::get('', 'HelloController@index');
 ```
 
 ###### POST route
 ```php
-Route::post('', 'WeatherController@index');
+Route::post('', 'HelloController@index');
 ```
 
 ###### UPDATE route
 ```php
-Route::update('', 'WeatherController@index');
+Route::update('', 'HelloController@index');
 ```
 
 ###### DELETE route
 ```php
-Route::delete('', 'WeatherController@index');
+Route::delete('', 'HelloController@index');
 ```
 
 ###### ANY route
 ```php
-Route::any('', 'WeatherController@index');
+Route::any('', 'HelloController@index');
 ```
 
 So it is possible that your routes file looks like this
@@ -57,11 +57,11 @@ So it is possible that your routes file looks like this
 <?php
 
 // Weather
-Route::get('weather', 'WeatherController@weather');
+Route::get('hello', 'HelloController@index');
 Route::post('weather', 'WeatherController@handle');
 
 // Index
-Route::get('', 'WeatherController@index');
+Route::get('', 'HomeController@index');
 
 ```
 
@@ -79,15 +79,10 @@ class SampleController extends BaseController
 {
 	public function index()
 	{
-		return "Hi! I'm the weather controller index method";
+		return "Hi!";
 	}
 
-	public function handle()
-	{
-		return "Hey, you used the POST method!";
-	}
-
-	public function weather()
+	public function test()
 	{
 		return "You use the GET method";
 	}
@@ -96,7 +91,7 @@ class SampleController extends BaseController
 
 ### Models
 
-Your models can been accessed like a "normal" alias. So if you have a model like this
+Your models can been accessed like a "normal" class. So if you have a model like this
 
 ```php
 <?php
