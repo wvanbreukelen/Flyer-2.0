@@ -4,8 +4,10 @@
  * This file contains all of the routes that will be loaded in the application
  */
 
-Route::get('lol', 'HomeController@indexs');
+// The default "hello" route
+Route::get('hello', 'HelloController@index');
 
-Route::get('test', function () {
-	return "Hello World!";
+
+Route::get('/', function() {
+    return "Hello World!";
 });

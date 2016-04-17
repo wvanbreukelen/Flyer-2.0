@@ -1,7 +1,7 @@
 <?php
 
 /**
- * In this file you can edit the framework configuration to your own wish
+ * In this file you can edit the Flyer framework to your own wishes
  */
 
 return array(
@@ -12,8 +12,9 @@ return array(
 
 	'environment' => array(
 		'debug' 		   => true,
-		'defaultDebugFile' => 'debug.log',
-		'url'        	   => 'localhost/workspace/public/',
+		'logperformance'   => false,
+		'defaultDebugFile' => 'debug_' . time() . '.log',
+		'url'        	   => 'localhost/myapp/framework/public/',
 	),
 
 	/**
@@ -30,6 +31,7 @@ return array(
 		'Flyer\Components\Config\ConfigServiceProvider',
 		'Flyer\Components\Logging\LoggingServiceProvider',
 		'Flyer\Components\Console\ConsoleServiceProvider',
+		'Flyer\Components\Performance\PerformanceServiceProvider'
 	),
 
 	/**
@@ -48,10 +50,11 @@ return array(
         'Folder'   => 'Flyer\Foundation\Facades\Folder',
         'Log'      => 'Flyer\Foundation\Facades\Log',
         'Random'   => 'Flyer\Foundation\Facades\Random',
-        'Ftp'      => 'Flyer\Foundation\Facades\Ftp',
-        'Ssh'      => 'Flyer\Foundation\Facades\Ssh',
+        'FTP'      => 'Flyer\Foundation\Facades\FTP',
+        'SSH'      => 'Flyer\Foundation\Facades\SSH',
         'HTML'     => 'Flyer\Foundation\Facades\HTML',
 		'Debugger' => 'Flyer\Foundation\Facades\Debugger',
+		'Timer'    => 'Flyer\Foundation\Facades\Timer'
 	),
 
 	/**
@@ -89,7 +92,7 @@ return array(
 
 	'debugMessages' => array(
 		'init_exceptions'     => 'Setting up Exceptionizer...',
-		'reg_implements'      => 'Adding implements to Exceptionizer...',
+		'add_implements'      => 'Adding implements to Exceptionizer...',
 		'reg_handlers'        => 'Registering the Exceptionizer handlers, exceptions after this message will be thrown with exceptionizer',
 		'reg_handlers_done'   => 'Registered Exceptionizer handlers, using Exceptionizer right now :)',
 		'init_finished'       => 'The application is initialized',
@@ -99,7 +102,7 @@ return array(
 		'error_event_done'    => 'A error loader has been added to the event manager',
 		'imp_bindings'        => 'Importing application bindings...',
 		'imp_bindings_done'   => 'Successfully imported application bindings',
-		'db_init_done'        => 'The illimunate\database component has been initialized',
+		'db_init_done'        => 'The illuminate\database component has been initialized',
 		'reg_view_comp_done'  => 'All the view compilers have been registered to the view component',
 		'app_reg'			  => 'Registering service providers...',
 		'app_reg_done'        => 'All the application attached packages have been autoloaded/registered',
@@ -112,7 +115,7 @@ return array(
 		'loading_routes'      => 'Loading the routes.php file...',
 		'loading_routes_done' => 'Finished loading the routes',
 		'app_boot' 			  => 'Booting the application...',
-		'end'                 => 'All done!'
+		'end'                 => 'Finished, send response!'
 	)
 
 );

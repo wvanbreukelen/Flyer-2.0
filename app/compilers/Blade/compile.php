@@ -224,7 +224,8 @@ class BladeCompiler {
 
 		$callback = function($matches)
 		{
-			return '<?php echo e('.$this->compileEchoDefaults($matches[1]).'); ?>';
+			/**return '<?php echo e('.$this->compileEchoDefaults($matches[1]).'); ?>';**/
+			return '<?php echo '.$this->compileEchoDefaults($matches[1]).'; ?>';
 		};
 
 		return preg_replace_callback($pattern, $callback, $value);

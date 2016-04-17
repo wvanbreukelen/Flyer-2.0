@@ -1,1 +1,1 @@
-Welcome to Flyer, {{{ $name }}}!!!
+Welcome to Flyer, {{{ $name }}}!

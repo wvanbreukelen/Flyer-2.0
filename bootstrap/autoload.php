@@ -1,5 +1,6 @@
 <?php
 
+use Flyer\Components\Performance\Timer;
 use Flyer\Components\Logging\Debugger;
 use Flyer\Foundation\Facades\Facade;
 use Flyer\Foundation\Events\Events;
@@ -19,28 +20,36 @@ $app = new App();
 $app->setConfig(new Config);
 
 /**
+ * Set the performance monitor
+ */
+
+$app->setPerformanceMonitor(new Timer);
+
+/**
  * Setting the application environment, by example; browser or CLI
  */
 
 $app->setEnvironment();
 
 /**
- * Require the needed config files in the application
+ * Require the needed config files
  */
 
 $app->config()->import($app->path() . 'config/config.php');
-
-/**
- * Set the debugger handler for debugging purposes
- */
-
-$app->setDebuggerHandler(new Debugger($app->config()));
 
 /**
  * Implement the helpers into the application
  */
 
 require_once($app->basePath() . 'app/helpers.php');
+
+/**
+ * Set the debugger handler for debugging purposes
+ */
+
+$app->setDebuggerHandler(new Debugger($app->config(), $app->performance()));
+
+function debugger() {return app('application.debugger');}
 
 /**
  * Set up Exceptionizer for throwing errors/notices/exceptions
@@ -53,7 +62,7 @@ $ec = new Exceptionizer();
  * Register some required implementors to Exceptionizer
  */
 
-$app->debugger()->point('reg_implements');
+$app->debugger()->point('add_implements');
 
 $ec->addImplementor(new Flyer\Components\Logging\LoggingImplementor);
 $ec->addImplementor(new Exceptionizer\Implement\WhoopsImplementor);
@@ -82,22 +91,9 @@ $app->debugger()->point('facade_app_done');
 
 $app->debugger()->point('request_event');
 
-$app->bind('request.get', function ()
-{
-	return Request::createFromGlobals();
-});
-
 $app->debugger()->point('request_event_done');
 
-/**
- * Bind the default 404 error page to the application
- */
-
-$app->bind('application.error.404', function()
-{
-	return View::render('404', array('page' => Request::createFromGlobals()->getPathInfo()));
-});
-
+// @wvanbreukelen Remove?
 $app->debugger()->point('error_event_done');
 $app->debugger()->point('imp_bindings');
 
@@ -105,12 +101,12 @@ $app->debugger()->point('imp_bindings');
  * Import the file with additional bindings
  */
 
-require(bindings_path() . 'bindings.php');
+require(app_path() . 'bindings.php');
 $app->debugger()->point('imp_bindings_done');
 
 
 /**
- * NOT USING Lets start up the database component by creating an alias for the illuminate/database package
+ * Lets start up the database component by creating an alias for the illuminate/database package
  */
 
 // NOTICE: Can this be handled by a facade? @wvanbreukelen

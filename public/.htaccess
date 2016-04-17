@@ -1,3 +1,5 @@
+# .htaccess file for Flyer PHP framework
+
 <IfModule mod_rewrite.c>
         <IfModule mod_negotiation.c>
             Options -MultiViews
@@ -6,9 +8,9 @@
     RewriteEngine On
 
     # Redirect Trailing Slashes...
-        RewriteRule ^(.*)/$ /$1 [L,R=301]
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-        # Handle Front Controller...
+    # Rewrite every URL to the framework front controller
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
