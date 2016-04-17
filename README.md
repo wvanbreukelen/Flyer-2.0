@@ -10,6 +10,8 @@ A simple to use PHP framework!
 
 ### Installation
 
+NOTE: The following changes could be outdated! For better documentation, visit the wiki section.
+
 It's very easy to install the Flyer Framework!
 Steps:
 
