@@ -31,13 +31,9 @@ require($app->appPath() . 'routes.php');
 $app->boot();
 
 /**
- * Shutdown the console application to return the console output back to the user
+ * Shutdown the console application
  */
 
 $app->shutdown();
-
-/**
- * Done! Exit the application just to be sure
- */
 
 exit();

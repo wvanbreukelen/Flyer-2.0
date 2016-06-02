@@ -11,8 +11,9 @@
     ],
     "require": {
         "wvanbreukelen/commandr": "dev-master",
-        "flyer/core": "1.3.*",
-        "wvanbreukelen/exceptionizer": "1.1.*"
+        "wvanbreukelen/exceptionizer": "1.1.*",
+        "flyer/console": "1.0.*",
+        "flyer/core": "1.3.5-alpha"
     },
     "autoload": {
         "classmap": ["app", "FlyerCore"]
