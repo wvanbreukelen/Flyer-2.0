@@ -1,27 +1,25 @@
 Flyer
 =========
 
-A simple to use PHP framework!
+A PHP framework with focus on extendablity and automation
 
-### Notes
-* This framework uses the MVC pattern
-* This framework is in development, expect some (major) bugs
-* This framework is inspired by Laravel
+### Requirements
+
+- At least PHP version 5.6.* or higher (PHP 7 supported)
 
 ### Installation
 
-NOTE: The following changes could be outdated! For better documentation, visit the wiki section.
+It's pretty easy to install Flyer! Just open an command prompt and run:
 
-It's very easy to install the Flyer Framework!
-Steps:
-
-1. Clone this repository, the master or alpha branch.
-2. Open a command window (Terminal, CMD, etc.) and type
 ```bash
-composer update
+composer create-project flyer/framework
 ```
-This will install the required dependencies and generate the autoload files
-3. Done, enjoy!
+
+All the required dependicies will be automatically installed, and you are all set!
+
+### Documentation
+
+For the latest documentation, please visit the wiki section of this repository.
 
 ### Views
 
