@@ -1,4 +1,4 @@
-Flyer
+Flyer PHP framework
 =========
 
 A PHP framework with focus on extendablity and automation
