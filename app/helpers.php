@@ -29,21 +29,23 @@ use Flyer\Components\Router\Router;
 
 if (!function_exists('render'))
 {
-    function render($viewName = null)
+    function render($viewName = null, array $vars = array())
     {
-        if (is_string($viewName))
+        // View name passed?
+        if (is_string($viewName) == false || is_null($viewName) == true)
         {
-            return View::render($viewName);
+            // Try to set view name to URI
+            $viewName = Router::getRequestURI(true);
         }
 
-        // If possible, guess the view the developer wants to render
-        // Otherwise, return the HTTP 500 (server error) page
-        try
+        // Make sure the view exists in the view finder stack
+        if (View::exists($viewName))
         {
-            return View::render(Router::getRequestURI(true));
-        } catch (Exception $e) {
-            return View::render('500');
+            return (count($vars) == 0) ? View::render($viewName) : View::render($viewName, $vars);
         }
+
+        // Server error occured, return HTTP 500 page
+        return View::render('500');
     }
 }
 
@@ -81,6 +83,17 @@ if (!function_exists('config_path'))
 	{
 		return app('path.config');
 	}
+}
+
+if (!function_exists('controllers_path'))
+{
+    function controllers_path($realPath = null)
+    {
+        if (is_null($realPath))
+        {
+            return app('path.controllers');
+        }
+    }
 }
 
 if (!function_exists('debug_path'))
@@ -125,8 +138,13 @@ if (!function_exists('views_path'))
      * Return the views path
      */
 
-	function views_path()
+	function views_path($realPath = null)
 	{
-		return app('path.views');
+        if (is_null($realPath))
+        {
+            return app('path.views');
+        }
+
+        return rtrim($realPath . 'views', DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'views';
 	}
 }
