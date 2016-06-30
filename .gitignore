@@ -2,6 +2,6 @@
 /FlyerCore
 /CommandrCore
 /app/cache
+/app/debug
 composer.lock
 composer.json
-debug.log
