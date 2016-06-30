@@ -1,6 +1,7 @@
 /vendor
 /FlyerCore
 /CommandrCore
+/app/cache
 composer.lock
 composer.json
 debug.log
