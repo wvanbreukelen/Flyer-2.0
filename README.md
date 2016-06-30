@@ -23,15 +23,9 @@ For the latest documentation, please visit the wiki section of this repository.
 
 ## Contributing
 
-You are free to contribute, as long you stick to the Symfony rules. 
+You are free to contribute, as long you stick to the Symfony rules.
 Please create a pull request and I will take a look at it.
 
 ## Questions
 
 If you have any questions, feel free to contact me! Or just create a issue.
-
-
-
-
-
-
