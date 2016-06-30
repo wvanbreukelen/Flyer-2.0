@@ -11,7 +11,7 @@ return array(
 	 */
 
 	'environment' => array(
-		'debug' 		   => true,
+		'debug' 		   => false,
 		'logperformance'   => false,
 		'defaultDebugFile' => 'debug_' . time() . '.log',
 		'url'        	   => 'localhost/myapp/framework/public/',
@@ -31,7 +31,7 @@ return array(
 		'Flyer\Components\Config\ConfigServiceProvider',
 		'Flyer\Components\Logging\LoggingServiceProvider',
 		'Flyer\Components\Console\ConsoleServiceProvider',
-		'Flyer\Components\Performance\PerformanceServiceProvider'
+		// 'Flyer\Components\Performance\PerformanceServiceProvider'
 	),
 
 	/**
@@ -53,8 +53,8 @@ return array(
         'FTP'      => 'Flyer\Foundation\Facades\FTP',
         'SSH'      => 'Flyer\Foundation\Facades\SSH',
         'HTML'     => 'Flyer\Foundation\Facades\HTML',
-		'Debugger' => 'Flyer\Foundation\Facades\Debugger',
-		'Timer'    => 'Flyer\Foundation\Facades\Timer'
+	    'Debugger' => 'Flyer\Foundation\Facades\Debugger',
+		// 'Timer'    => 'Flyer\Foundation\Facades\Timer'
 	),
 
 	/**
@@ -62,14 +62,14 @@ return array(
 	 */
 
 	'viewCompilers' => array(
-		'wvanbreukelen.blade' => 'wvanbreukelen\Blade\BladeEngine',
+		'flyer.blade' => 'Flyer\Compilers\Blade\BladeEngine',
 	),
 
 	/**
 	 * The default view compiler for compiling any view
 	 */
 
-	'defaultViewCompiler' => 'wvanbreukelen.blade',
+	'defaultViewCompiler' => 'flyer.blade',
 
 	/**
 	 * Database configuration settings (see Illuminate/Database)
