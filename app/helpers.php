@@ -10,6 +10,14 @@ use Flyer\Components\Router\Router;
  * @wvanbreukelen, function_exists may be removed in the future. Use the mirror in FlyerCore (copy of current file), when specific functions are not declared.
  */
 
+if (!function_exists('e'))
+{
+    function e($value)
+    {
+        return htmlentities($value);
+    }
+}
+
  if (!function_exists('app'))
  {
      /**
