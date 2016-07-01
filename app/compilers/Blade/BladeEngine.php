@@ -16,7 +16,7 @@ class BladeEngine
 	public function compile($path, $view, array $values = array())
 	{
 		// Receive cache path
-		$cachePath = App::getInstance()->make('path.app'). 'cache';
+		$cachePath = App::getInstance()->make('path.cache');
 
 		// Create new Blade compiler instance
 		$this->blade = new BladeCompiler($cachePath);

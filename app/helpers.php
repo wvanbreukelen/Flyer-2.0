@@ -81,6 +81,18 @@ if (!function_exists('app_path'))
 	}
 }
 
+if (!function_exists('cache_path'))
+{
+    /**
+     * Return the cache path
+     */
+
+    function cache_path()
+    {
+        return app('path.cache');
+    }
+}
+
 if (!function_exists('config_path'))
 {
     /**
@@ -95,6 +107,10 @@ if (!function_exists('config_path'))
 
 if (!function_exists('controllers_path'))
 {
+    /**
+     * Return the controllers path
+     */
+
     function controllers_path($realPath = null)
     {
         if (is_null($realPath))
