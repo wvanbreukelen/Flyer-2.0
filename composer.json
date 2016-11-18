@@ -13,7 +13,7 @@
         "wvanbreukelen/commandr": "dev-master",
         "wvanbreukelen/exceptionizer": "1.1.*",
         "flyer/console": "1.0.*",
-        "flyer/core": "1.3.5-alpha"
+        "flyer/core": "1.3.6-alpha"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.4@stable"
